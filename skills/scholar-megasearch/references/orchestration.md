@@ -29,7 +29,12 @@ export const meta = {
   description: 'Fan out academic search across source buckets, merge into one corpus',
   phases: [{ title: 'Search' }, { title: 'Synthesize' }],
 }
-// args = { topic, facets: ["subquery 1", ...], buckets: [{key, prompt}, ...] }
+// args = { topic, facets: ["subquery 1", ...], buckets: [{key, prompt}, ...],
+//          cap?: 30, seeds?: ["10.x/y", "arXiv:2401.00001"] }
+// One wave per call. cap = hits/subquery (set by the depth level, SKILL.md). When seeds is
+// non-empty this is a CITATION-SNOWBALL wave (L3+): searchers expand the seeds' citations
+// instead of running facet queries. The main loop chains waves and runs merge_corpus.py
+// (Bash) between them — initial (all) → snowball (L3+) → critic-driven (L4+, looped at L5).
 const REC_SCHEMA = {
   type: 'object', required: ['results'],
   properties: { results: { type: 'array', items: { type: 'object',
@@ -41,28 +46,38 @@ const REC_SCHEMA = {
       source:{type:'string'}, query:{type:'string'} } } } } }
 
 phase('Search')
+const CAP = args.cap || 30
+const snowball = Array.isArray(args.seeds) && args.seeds.length > 0
+const task = snowball
+  ? `\n\nThis is a CITATION-SNOWBALL wave. For EACH seed below, pull its forward (cited-by) ` +
+    `and backward (references) neighbours via your citation tools (citation_graph, OpenAlex ` +
+    `cited-by, Semantic Scholar references):\n` +
+    args.seeds.map((s, i) => `  ${i + 1}. ${s}`).join('\n') +
+    `\n\nSet "query" to "snowball:<seed>" on every record.`
+  : `\n\nRun EACH of these subqueries through your tools and collect hits:\n` +
+    args.facets.map((f, i) => `  ${i + 1}. ${f}`).join('\n') +
+    `\n\nSet "query" to the subquery on every record.`
 const perBucket = await parallel(args.buckets.map(b => () =>
   agent(
     `You are the "${b.key}" searcher in a literature megasearch on: ${args.topic}\n` +
-    `${b.prompt}\n\nRun EACH of these subqueries through your tools and collect hits:\n` +
-    args.facets.map((f,i)=>`  ${i+1}. ${f}`).join('\n') +
-    `\n\nLoad tool schemas with ToolSearch first. Aim for 20-40 hits per subquery. ` +
-    `Set "source" to a short tag and "query" to the subquery on every record. ` +
-    `Return ALL records (do not dedupe).`,
+    `${b.prompt}${task}\n\n` +
+    `Load tool schemas with ToolSearch first. Aim for ~${CAP} hits per subquery/seed. ` +
+    `Set "source" to a short tag on every record. Return ALL records (do not dedupe).`,
     { label: `search:${b.key}`, phase: 'Search', schema: REC_SCHEMA }
   ).then(r => ({ bucket: b.key, results: (r && r.results) || [] }))
 ))
 const all = perBucket.filter(Boolean)
-log(`collected ${all.reduce((n,b)=>n+b.results.length,0)} raw records from ${all.length} buckets`)
+log(`collected ${all.reduce((n, b) => n + b.results.length, 0)} raw records from ${all.length} buckets`)
 return { raw: all }   // main loop writes these to raw/*.json then runs merge_corpus.py
 ```
 
 After the workflow returns, write each `raw[i]` to `<run>/raw/<bucket>.json` and run
 `merge_corpus.py`. Then do the synthesis (see SKILL.md step 5).
 
-For a deeper run, add a **citation-snowball** round: feed the top ~10 DOIs/arXiv ids from
-the first corpus back in as seeds (`citation_graph`, `search_openalex` cited-by) and merge
-the second wave into the same corpus.
+For deeper runs (L3+), chain extra waves: a **citation-snowball** wave feeds the top ~10
+DOIs/arXiv ids from the corpus so far back in as `seeds:[...]` (the script switches to
+snowball mode); L4+ then add a **completeness-critic** agent whose missing-subtopic list
+becomes the next wave's facets, looped until dry at L5. Merge each wave into the same corpus.
 
 ## Fallback: Agent fan-out (always available, no opt-in)
 
@@ -73,13 +88,17 @@ prompt as above and instruct it to **write its raw file directly** to
 
 Agent prompt skeleton (one per bucket):
 > You are the "{bucket}" searcher. Topic: {topic}. Tools/bucket: {bucket tools from
-> sources.md}. Load schemas via ToolSearch. Run each subquery: {facets}. Normalize every
-> hit to the record schema (set source+query). Write the JSON list to
-> `{run}/raw/{bucket}.json`. Report only the count written.
+> sources.md}. Load schemas via ToolSearch. Run each subquery: {facets}. Aim for ~{cap}
+> hits per subquery. Normalize every hit to the record schema (set source+query). Write the
+> JSON list to `{run}/raw/{bucket}.json`. Report only the count written.
 
-## Scaling knobs
-- **facets**: 3–8 subqueries (synonyms, sub-aspects, method vs. phenomenon, key authors).
-- **buckets**: 4–7 from the routing table in `sources.md`.
-- **depth**: 1 round (fast) → add citation-snowball + a completeness-critic agent
-  ("what subtopic or seminal author is missing from this corpus?") for exhaustive runs.
-- per-source hit cap lives in the agent prompt ("20-40 per subquery").
+For L3+ snowball/critic waves, reuse this skeleton with seeds or critic-named facets in
+place of `{facets}`, writing each wave to a new `raw/<bucket>_w2.json` etc. before re-merging.
+
+## Scaling knobs → depth levels (L1–L5)
+These four knobs are bundled into five preset levels in `SKILL.md` (`## Depth levels`);
+pick one level per run instead of tuning knobs individually.
+- **facets**: 3 (L1) → 8 (L4/L5) subqueries (synonyms, sub-aspects, method vs. phenomenon, key authors).
+- **buckets**: 4 (L1) → 7/all (L4/L5) from the routing table in `sources.md`.
+- **hits/subquery**: ~15 (L1) → ~40 (L4/L5); passed as `cap` in the Workflow args / written into the Agent prompt.
+- **waves**: 1 (L1–L2) → +citation-snowball (L3) → +completeness-critic (L4) → critic loop-until-dry (L5).

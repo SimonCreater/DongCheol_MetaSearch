@@ -88,7 +88,7 @@ high-precision shortlist that filters out single-index noise.
 
 ### A typical run
 
-A mid-depth sweep on a focused topic looks roughly like this *(illustrative)*:
+A mid-depth sweep (≈ **L3 Deep**) on a focused topic looks roughly like this *(illustrative)*:
 
 ```
 topic: "spin–orbit torque switching in ferrimagnets"
@@ -144,12 +144,27 @@ python3 ~/.claude/skills/scholar-megasearch/scripts/fetch_pdfs.py \
   corpus.json -o ./pdfs --email you@example.com --top 25
 ```
 
-### Depth control
+### Depth levels
 
-| Mode | Facets | Buckets | Extra |
-|------|:------:|:-------:|-------|
-| **Quick sweep** | 3–4 | 4 | single round |
-| **Exhaustive** (systematic review) | 6–8 | 6–7 | + citation snowball (seed top DOIs/arXiv ids back through citation graphs and merge the second wave) + a completeness-critic pass that names missing subtopics/authors |
+One knob scales **breadth** (facets × buckets × hits per query) and **recursion**
+(extra waves) together. Pick a level per run — an explicit `depth=N` / `LN` / bare
+`1–5` wins; otherwise it's inferred from phrasing (`quick`/`빠르게` → L1 …
+`every source`/`전수조사` → L5); otherwise it defaults to **L2**.
+
+| Level | Facets | Buckets | Hits/query | Waves | Output |
+|-------|:------:|:-------:|:----------:|-------|--------|
+| **L1 · Quick** | 3 | 4 | 15 | wave 1 only | corpus |
+| **L2 · Standard** *(default)* | 5 | 5 | 25 | wave 1 only | corpus |
+| **L3 · Deep** | 6 | 6 | 30 | + citation snowball | corpus |
+| **L4 · Exhaustive** | 8 | 7 (all) | 40 | + snowball + completeness-critic pass | corpus + ≥2 shortlist |
+| **L5 · Total** (전수조사) | 8 | 7 (all) | 40 | + snowball + critic loop-until-dry | corpus + ≥2 shortlist |
+
+Each wave is a fan-out followed by a merge into the *same* corpus: the **citation
+snowball** (L3+) seeds the top DOIs/arXiv ids back through citation graphs; the
+**completeness-critic** (L4+) names missing subtopics/authors that become the next
+wave's facets, looped until dry at L5. L4/L5 also emit a `--min-sources 2` shortlist.
+Higher levels spawn more subagents and cost more tokens — L5 is bounded only by the
+token budget.
 
 ## Outputs
 

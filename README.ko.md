@@ -82,7 +82,7 @@ DB가 교차 검증하는지로 랭킹되며, 무료 경로가 있으면 PDF가 
 
 ### 전형적인 실행 예시
 
-집중된 주제에 대한 중간 깊이 스윕은 대략 이렇다 *(예시 수치)*:
+집중된 주제에 대한 중간 깊이 스윕(≈ **L3 Deep**)은 대략 이렇다 *(예시 수치)*:
 
 ```
 주제: "ferrimagnet의 spin–orbit torque switching"
@@ -138,12 +138,26 @@ python3 ~/.claude/skills/scholar-megasearch/scripts/fetch_pdfs.py \
   corpus.json -o ./pdfs --email you@example.com --top 25
 ```
 
-### 깊이 조절
+### 깊이 단계 (L1–L5)
 
-| 모드 | facets | buckets | 추가 |
-|------|:------:|:-------:|-------|
-| **빠른 스윕** | 3~4 | 4 | 단일 라운드 |
-| **전수조사** (systematic review) | 6~8 | 6~7 | + 인용 스노우볼(상위 DOI/arXiv id를 인용 그래프에 재투입해 2차 웨이브 병합) + 누락된 하위주제·저자를 짚는 completeness-critic 패스 |
+하나의 노브가 **너비**(facets × buckets × 쿼리당 hits)와 **재귀**(추가 웨이브)를 함께
+스케일한다. 실행마다 레벨을 고른다 — 명시적 `depth=N` / `LN` / 맨숫자 `1–5`가 최우선,
+없으면 표현으로 추론(`빠르게`/`quick` → L1 … `전수조사`/`every source` → L5),
+그래도 없으면 **L2** 기본.
+
+| 레벨 | facets | buckets | 쿼리당 hits | 웨이브 | 산출물 |
+|------|:------:|:-------:|:----------:|--------|--------|
+| **L1 · Quick** | 3 | 4 | 15 | 웨이브 1 | corpus |
+| **L2 · Standard** *(기본)* | 5 | 5 | 25 | 웨이브 1 | corpus |
+| **L3 · Deep** | 6 | 6 | 30 | + 인용 스노우볼 | corpus |
+| **L4 · Exhaustive** | 8 | 7 (전체) | 40 | + 스노우볼 + completeness-critic 패스 | corpus + ≥2 shortlist |
+| **L5 · Total** (전수조사) | 8 | 7 (전체) | 40 | + 스노우볼 + critic 루프(고갈까지) | corpus + ≥2 shortlist |
+
+각 웨이브는 팬아웃 후 *같은* 코퍼스로 병합된다. **인용 스노우볼**(L3+)은 상위 DOI/arXiv
+id를 인용 그래프에 재투입하고, **completeness-critic**(L4+)은 누락된 하위주제·저자를 짚어
+다음 웨이브의 facet으로 삼으며 L5에서는 고갈될 때까지 반복한다. L4/L5는 `--min-sources 2`
+shortlist도 함께 낸다. 상위 레벨일수록 서브에이전트와 토큰을 더 쓴다 — L5는 토큰 budget만이
+상한이다.
 
 ## 산출물
 
