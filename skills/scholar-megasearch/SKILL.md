@@ -139,6 +139,7 @@ corroborated by ≥2 databases) alongside the full `corpus.json`.
 If MCP servers are down/headless, searchers use `scripts/search_local.py {arxiv|
 semanticscholar|ddg} "query"` (runs on `~/.claude/skill_venv/bin/python3`). arXiv may
 rate-limit (HTTP 429) under heavy fan-out — stagger or lean on Asta/OpenAlex. The Asta
-(Semantic Scholar) MCP is remote — in headless/cron runs ensure network access and an
-`ASTA_API_KEY`, or fall back to `search_local.py semanticscholar`. Never let claude.ai
-`Scholar_Gateway` be a bucket's only tool (absent in headless runs).
+(Semantic Scholar) MCP is remote and needs **no key** (a key only raises rate limits) —
+in headless/cron runs just ensure network access, or fall back to
+`search_local.py semanticscholar`. Never let claude.ai `Scholar_Gateway` be a bucket's
+only tool (absent in headless runs).

@@ -112,9 +112,11 @@ The script installs the skills into `~/.claude/skills/`, builds
 servers (`paper-search-mcp` from git main — the PyPI build lacks Crossref/OpenAlex;
 `arxiv-mcp-server` via `uvx`), and writes `setup/mcp.servers.resolved.json`. Semantic
 Scholar (Bucket B) is the **remote** [Ai2 Asta MCP](https://allenai.org/asta/resources/mcp) —
-nothing to install; request a free API key, `export ASTA_API_KEY=<key>` (the config
-expands `${ASTA_API_KEY}`), and note that its use is subject to Ai2's terms (see
-[Attribution](#attribution)). Merge that file's `mcpServers` entries into
+nothing to install, and it works **without a key** (rate-limited). For higher rate
+limits, request a free key and add a header to the `asta` entry:
+`"headers": { "x-api-key": "YOUR_ASTA_KEY" }` — paste the **literal** key (a `${ENV}`
+placeholder is sent verbatim and rejected with HTTP 403). Asta use is subject to Ai2's
+terms (see [Attribution](#attribution)). Merge that file's `mcpServers` entries into
 `~/.claude.json` and restart Claude Code.
 
 **Requirements**
