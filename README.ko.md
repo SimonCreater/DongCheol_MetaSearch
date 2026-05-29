@@ -65,25 +65,9 @@ DB가 교차 검증하는지로 랭킹되며, 무료 경로가 있으면 PDF가 
 
 ## 동작 방식
 
-```
-주제
-  │  3~8개 facet 서브쿼리로 분해
-  ▼
-┌─────────────────────────────────────────────────────────────┐
-│  팬아웃 — 소스 버킷당 서브에이전트 1개 (병렬)                  │
-│                                                               │
-│  A arXiv        B Semantic Scholar   C Crossref / OpenAlex    │
-│  D PubMed/PMC   E DOAJ·CORE·BASE     F DBLP·IACR·SSRN         │
-│  G 웹 / GitHub / 회색문헌                                     │
-└─────────────────────────────────────────────────────────────┘
-  │  각자 raw/<bucket>.json 작성  (중복제거 안 함)
-  ▼
-merge_corpus.py   →  중복제거(DOI→arXiv→제목) + 병합 + 랭킹  →  corpus.json / corpus.md
-  ▼
-fetch_pdfs.py     →  pdf_url → arXiv → Unpaywall OA → MCP 폴백  →  pdfs/ + manifest.json
-  ▼
-합성              →  summary.md  (테마 · 핵심 · 최신 · 공백)
-```
+<p align="center">
+  <img src="./docs/pipeline.png" width="900" alt="scholar-megasearch 파이프라인: 주제 → facet 분해 → 소스 버킷당 서브에이전트 팬아웃 → merge_corpus.py(중복제거+랭킹) → fetch_pdfs.py → 합성">
+</p>
 
 오케스트레이션은 가능할 때 결정론적 **Workflow**로, 아니면 직접 **Agent** 팬아웃으로
 폴백한다. 도메인 → 버킷 라우팅 표가 주제별로 알맞은 4~7개 버킷을 고른다.

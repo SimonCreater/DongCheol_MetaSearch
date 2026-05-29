@@ -68,25 +68,9 @@ route exists.
 
 ## How It Works
 
-```
-topic
-  │  decompose into 3–8 facet subqueries
-  ▼
-┌─────────────────────────────────────────────────────────────┐
-│  fan out — one subagent per source bucket (parallel)          │
-│                                                               │
-│  A arXiv        B Semantic Scholar   C Crossref / OpenAlex    │
-│  D PubMed/PMC   E DOAJ·CORE·BASE     F DBLP·IACR·SSRN         │
-│  G web / GitHub / grey literature                             │
-└─────────────────────────────────────────────────────────────┘
-  │  each writes raw/<bucket>.json   (no dedup)
-  ▼
-merge_corpus.py   →  dedup (DOI→arXiv→title) + merge + rank  →  corpus.json / corpus.md
-  ▼
-fetch_pdfs.py     →  pdf_url → arXiv → Unpaywall OA → MCP fallback  →  pdfs/ + manifest.json
-  ▼
-synthesize        →  summary.md  (themes · seminal · frontier · gaps)
-```
+<p align="center">
+  <img src="./docs/pipeline.png" width="900" alt="scholar-megasearch pipeline: topic → decompose into facets → fan out one subagent per source bucket → merge_corpus.py (dedup + rank) → fetch_pdfs.py → synthesize">
+</p>
 
 Orchestration runs as a deterministic **Workflow** when available, and falls back to
 direct **Agent** fan-out otherwise. A domain → bucket routing table picks the right
