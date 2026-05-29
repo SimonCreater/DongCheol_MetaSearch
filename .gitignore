@@ -1,0 +1,6 @@
+__pycache__/
+*.pyc
+.DS_Store
+setup/mcp.servers.resolved.json
+literature_search/
+*.skill

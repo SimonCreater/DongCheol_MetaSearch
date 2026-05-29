@@ -1,0 +1,8 @@
+# Python packages for the search/acquisition venv (skill_venv).
+# Pinned to the versions verified working with lit-megasearch.
+arxiv==2.4.0
+semanticscholar==0.11.0
+ddgs==9.10.0
+pdfplumber==0.11.9
+crawl4ai==0.8.0
+pymupdf

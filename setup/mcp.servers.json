@@ -1,0 +1,25 @@
+{
+  "_comment": "Merge these three entries into the mcpServers block of ~/.claude.json (or use `claude mcp add`). Paths assume the locations created by install.sh. Replace HOME and the Unpaywall email as needed. install.sh writes a resolved copy to setup/mcp.servers.resolved.json.",
+  "mcpServers": {
+    "arxiv-mcp-server": {
+      "type": "stdio",
+      "command": "HOME/.local/bin/uvx",
+      "args": ["arxiv-mcp-server"],
+      "env": {}
+    },
+    "semantic-scholar-mcp": {
+      "type": "stdio",
+      "command": "HOME/.claude/skill_venv/bin/python3",
+      "args": ["HOME/.claude/skills/semantic-scholar-mcp/semantic_scholar_server.py"],
+      "env": {}
+    },
+    "paper-search-mcp": {
+      "type": "stdio",
+      "command": "HOME/.claude/paper_search_mcp_venv/bin/python",
+      "args": ["-m", "paper_search_mcp.server"],
+      "env": {
+        "PAPER_SEARCH_MCP_UNPAYWALL_EMAIL": "you@example.com"
+      }
+    }
+  }
+}
