@@ -84,14 +84,14 @@ math, or interdisciplinary).
 |------|------|
 | `skills/scholar-megasearch/` | The orchestration skill — `SKILL.md`, source catalog, orchestration templates, and three tested scripts (`merge_corpus.py`, `fetch_pdfs.py`, `search_local.py`). |
 | `skills/arxiv-search/` | Supporting skill — venv-based arXiv / Semantic Scholar / DuckDuckGo search patterns. |
-| `skills/semantic-scholar-mcp/` | The Semantic Scholar MCP server (vendored — see [Attribution](#attribution)). |
 | `setup/install.sh` | Installs skills, builds the venvs, installs all three MCP servers, emits a resolved MCP config. |
 | `setup/requirements.txt` | Pinned Python deps for the search/acquisition venv. |
 | `setup/mcp.servers.json` | MCP server registration template for `~/.claude.json`. |
 
-MCP servers that are pip/uvx-installable (`paper-search-mcp`, `arxiv-mcp-server`)
-are reconstituted from source by the installer with pinned/known-good versions,
-rather than vendored.
+This repository contains only original MIT-licensed work (the two skills and the
+setup scripts). The three MCP servers — `paper-search-mcp`, `arxiv-mcp-server`,
+and `semantic-scholar-mcp` — are **not** vendored; `setup/install.sh` fetches each
+from its upstream source at install time. See [Attribution](#attribution).
 
 ## Install
 
@@ -161,11 +161,12 @@ Full per-bucket tool lists and the domain → bucket routing table are in
 
 ## Attribution
 
-- **semantic-scholar-mcp** is vendored from
-  [JackKuo666/semanticscholar-MCP-Server](https://github.com/JackKuo666/semanticscholar-MCP-Server)
-  and retains its upstream README.
-- **paper-search-mcp** ([openags/paper-search-mcp](https://github.com/openags/paper-search-mcp))
-  and **arxiv-mcp-server** are installed from their upstream sources by `setup/install.sh`.
+The MCP servers are third-party projects, installed from their upstream sources by
+`setup/install.sh` — none of their code is redistributed here:
 
-Original work in this repository (the `scholar-megasearch` and `arxiv-search` skills and
-the setup scripts) is released under the [MIT License](./LICENSE).
+- **semantic-scholar-mcp** — [JackKuo666/semanticscholar-MCP-Server](https://github.com/JackKuo666/semanticscholar-MCP-Server) (cloned at install time)
+- **paper-search-mcp** — [openags/paper-search-mcp](https://github.com/openags/paper-search-mcp) (pip install from git main)
+- **arxiv-mcp-server** — launched on demand via `uvx`
+
+Original work in this repository (the `scholar-megasearch` and `arxiv-search` skills
+and the setup scripts) is released under the [MIT License](./LICENSE).

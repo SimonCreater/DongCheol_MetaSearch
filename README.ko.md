@@ -79,13 +79,13 @@ fetch_pdfs.py     →  pdf_url → arXiv → Unpaywall OA → MCP 폴백  →  p
 |------|------|
 | `skills/scholar-megasearch/` | 오케스트레이션 스킬 — `SKILL.md`, 소스 카탈로그, 오케스트레이션 템플릿, 검증된 스크립트 3종(`merge_corpus.py`, `fetch_pdfs.py`, `search_local.py`). |
 | `skills/arxiv-search/` | 보조 스킬 — venv 기반 arXiv / Semantic Scholar / DuckDuckGo 검색 패턴. |
-| `skills/semantic-scholar-mcp/` | Semantic Scholar MCP 서버 (벤더링 — [출처](#출처-attribution) 참조). |
 | `setup/install.sh` | 스킬 설치, venv 빌드, MCP 서버 3종 설치, 해석된 MCP 설정 출력. |
 | `setup/requirements.txt` | 검색/획득 venv의 고정 버전 Python 의존성. |
 | `setup/mcp.servers.json` | `~/.claude.json`용 MCP 서버 등록 템플릿. |
 
-pip/uvx로 설치 가능한 MCP 서버(`paper-search-mcp`, `arxiv-mcp-server`)는 벤더링하지
-않고, 설치 스크립트가 고정/검증된 버전으로 소스에서 재구성한다.
+이 저장소에는 원본 MIT 라이선스 작업(스킬 2종 + 설치 스크립트)만 포함된다. MCP 서버
+3종(`paper-search-mcp`, `arxiv-mcp-server`, `semantic-scholar-mcp`)은 **벤더링하지
+않으며**, `setup/install.sh`가 설치 시점에 각 상위 소스에서 가져온다. [출처](#출처-attribution) 참조.
 
 ## 설치
 
@@ -155,11 +155,12 @@ literature_search/<주제>_<날짜>/
 
 ## 출처 (Attribution)
 
-- **semantic-scholar-mcp**는
-  [JackKuo666/semanticscholar-MCP-Server](https://github.com/JackKuo666/semanticscholar-MCP-Server)에서
-  벤더링했으며 상위 저장소의 README를 유지한다.
-- **paper-search-mcp** ([openags/paper-search-mcp](https://github.com/openags/paper-search-mcp))와
-  **arxiv-mcp-server**는 `setup/install.sh`가 상위 소스에서 설치한다.
+MCP 서버는 모두 서드파티 프로젝트이며, `setup/install.sh`가 상위 소스에서 설치한다 —
+이 저장소에는 그들의 코드를 재배포하지 않는다:
+
+- **semantic-scholar-mcp** — [JackKuo666/semanticscholar-MCP-Server](https://github.com/JackKuo666/semanticscholar-MCP-Server) (설치 시 clone)
+- **paper-search-mcp** — [openags/paper-search-mcp](https://github.com/openags/paper-search-mcp) (git main에서 pip 설치)
+- **arxiv-mcp-server** — `uvx`로 온디맨드 실행
 
 이 저장소의 원본 작업(`scholar-megasearch`·`arxiv-search` 스킬과 설치 스크립트)은
 [MIT License](./LICENSE)로 배포된다.

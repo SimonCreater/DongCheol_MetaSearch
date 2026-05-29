@@ -22,7 +22,7 @@ echo "    skills: ${SKILLS_DST}"
 
 # --- 1. skills ---------------------------------------------------------------
 mkdir -p "${SKILLS_DST}"
-for s in scholar-megasearch arxiv-search semantic-scholar-mcp; do
+for s in scholar-megasearch arxiv-search; do
   echo "==> installing skill: ${s}"
   rm -rf "${SKILLS_DST:?}/${s}"
   cp -R "${REPO_DIR}/skills/${s}" "${SKILLS_DST}/${s}"
@@ -38,8 +38,15 @@ echo "==> installing Python deps into skill_venv"
 "${SKILL_VENV}/bin/python" -m pip install -q -r "${REPO_DIR}/setup/requirements.txt"
 
 # --- 3. MCP servers ----------------------------------------------------------
-# semantic-scholar-mcp runs from the installed skill folder using skill_venv.
-"${SKILL_VENV}/bin/python" -m pip install -q -r "${SKILLS_DST}/semantic-scholar-mcp/requirements.txt" || true
+# semantic-scholar-mcp is third-party (no license declared upstream), so it is
+# NOT vendored — it is cloned from source, then run with skill_venv.
+SSM_DST="${SKILLS_DST}/semantic-scholar-mcp"
+if [ ! -d "${SSM_DST}/.git" ]; then
+  echo "==> cloning semantic-scholar-mcp (JackKuo666)"
+  rm -rf "${SSM_DST}"
+  git clone -q https://github.com/JackKuo666/semanticscholar-MCP-Server.git "${SSM_DST}"
+fi
+"${SKILL_VENV}/bin/python" -m pip install -q -r "${SSM_DST}/requirements.txt" || true
 
 # paper-search-mcp MUST be the git-main build (the PyPI build lacks Crossref/OpenAlex).
 if [ ! -d "${PSM_VENV}" ]; then
