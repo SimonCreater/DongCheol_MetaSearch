@@ -18,19 +18,44 @@ per field (longest abstract, most authors, max citations, etc.) and accumulates 
 set of sources that found it in "sources" — source-hit-count is a strong relevance
 signal.
 
-Ranking (descending): sources_count, citations, year.
+Ranking defaults to a five-layer score designed to keep independent signals
+orthogonal: provenance, impact, recency, access/completeness, and query relevance.
+Use --ranking classic to restore the older sources_count/citations/year sort.
 
 Usage:
     merge_corpus.py RAW_DIR [-o corpus.json] [--md corpus.md] [--min-sources N]
+                    [--topic TOPIC] [--goal survey|systematic|newest|seminal|implementation|pdf-corpus]
 
 RAW_DIR may be a directory of *.json files or one or more explicit json files.
 """
 import argparse
 import glob
 import json
+import math
 import os
 import re
 import sys
+from datetime import datetime, timezone
+
+
+CURRENT_YEAR = datetime.now(timezone.utc).year
+
+GOAL_WEIGHTS = {
+    # Five orthogonal layers: source agreement, scholarly uptake, time frontier,
+    # acquisition/readability, and topic fit. Each profile sums to 1.0.
+    "survey": {"provenance": 0.30, "impact": 0.20, "recency": 0.15, "access": 0.15, "relevance": 0.20},
+    "systematic": {"provenance": 0.35, "impact": 0.20, "recency": 0.10, "access": 0.15, "relevance": 0.20},
+    "newest": {"provenance": 0.20, "impact": 0.10, "recency": 0.40, "access": 0.10, "relevance": 0.20},
+    "seminal": {"provenance": 0.20, "impact": 0.45, "recency": 0.05, "access": 0.10, "relevance": 0.20},
+    "implementation": {"provenance": 0.20, "impact": 0.15, "recency": 0.20, "access": 0.20, "relevance": 0.25},
+    "pdf-corpus": {"provenance": 0.25, "impact": 0.15, "recency": 0.10, "access": 0.30, "relevance": 0.20},
+}
+
+STOPWORDS = {
+    "a", "an", "and", "are", "as", "at", "by", "for", "from", "in", "into", "is",
+    "of", "on", "or", "the", "to", "via", "with", "without", "using", "based",
+    "paper", "papers", "study", "studies", "review", "survey",
+}
 
 
 def _load(path):
@@ -70,6 +95,15 @@ def norm_title(v):
         return None
     v = re.sub(r"[^a-z0-9]+", " ", str(v).lower()).strip()
     return v or None
+
+
+def terms(text):
+    out = set()
+    for tok in re.findall(r"[a-z0-9][a-z0-9-]{2,}", str(text or "").lower()):
+        tok = tok.strip("-")
+        if tok and tok not in STOPWORDS:
+            out.add(tok)
+    return out
 
 
 def record_keys(r):
@@ -150,12 +184,104 @@ def dedupe(records):
     return list(clusters.values())
 
 
-def rank(records):
+def _classic_key(r):
+    return (
+        len(r.get("sources") or []),
+        int(r.get("citations") or 0),
+        int(r.get("year") or 0),
+    )
+
+
+def _norm_log(value, max_value):
+    if not value or not max_value:
+        return 0.0
+    return math.log1p(max(0, value)) / math.log1p(max_value)
+
+
+def _access_score(r):
+    score = 0.0
+    if norm_doi(r.get("doi")) or norm_arxiv(r.get("arxiv_id") or r.get("arxiv")):
+        score += 0.25
+    if r.get("pdf_url"):
+        score += 0.25
+    if r.get("abstract"):
+        score += 0.20
+    if r.get("authors"):
+        score += 0.15
+    if r.get("year") or r.get("venue") or r.get("url"):
+        score += 0.15
+    return min(1.0, score)
+
+
+def _relevance_score(r, query_terms):
+    if not query_terms:
+        return 0.0
+    doc_terms = terms(" ".join(str(x or "") for x in (
+        r.get("title"), r.get("abstract"), r.get("venue"), " ".join(r.get("queries") or [])
+    )))
+    if not doc_terms:
+        return 0.0
+    overlap = len(query_terms & doc_terms)
+    # Cap the denominator so long query expansions do not crush good matches.
+    return min(1.0, overlap / max(1, min(len(query_terms), 12)))
+
+
+def _layer_scores(r, stats, query_terms):
+    citations = int(r.get("citations") or 0)
+    year = int(r.get("year") or 0)
+    age = max(1, CURRENT_YEAR - year + 1) if year else None
+    citation_velocity = citations / age if age else 0.0
+    impact = (
+        0.65 * _norm_log(citations, stats["max_citations"]) +
+        0.35 * _norm_log(citation_velocity, stats["max_velocity"])
+    )
+    recency = 0.0
+    if age:
+        recency = max(0.0, 1.0 - ((age - 1) / 12.0))
+    return {
+        "provenance": min(1.0, (r.get("sources_count") or 0) / max(1, min(stats["max_sources"], 4))),
+        "impact": round(impact, 6),
+        "recency": round(recency, 6),
+        "access": round(_access_score(r), 6),
+        "relevance": round(_relevance_score(r, query_terms), 6),
+    }
+
+
+def rank(records, ranking="layered", topic="", goal="survey"):
+    if ranking == "classic":
+        for r in records:
+            r.pop("rank_layers", None)
+            r.pop("score", None)
+            r.pop("rank_goal", None)
+        return sorted(records, key=_classic_key, reverse=True)
+
+    weights = GOAL_WEIGHTS.get(goal) or GOAL_WEIGHTS["survey"]
+    max_citations = max((int(r.get("citations") or 0) for r in records), default=0)
+    velocities = []
+    for r in records:
+        year = int(r.get("year") or 0)
+        if year:
+            velocities.append(int(r.get("citations") or 0) / max(1, CURRENT_YEAR - year + 1))
+    stats = {
+        "max_citations": max_citations,
+        "max_velocity": max(velocities, default=0.0),
+        "max_sources": max((r.get("sources_count") or 0 for r in records), default=1),
+    }
+    query_terms = terms(topic)
+    for r in records:
+        query_terms |= terms(" ".join(r.get("queries") or []))
+
+    for r in records:
+        layers = _layer_scores(r, stats, query_terms)
+        score = sum(layers[k] * weights[k] for k in weights)
+        r["rank_layers"] = layers
+        r["rank_goal"] = goal
+        r["score"] = round(score, 6)
+
     def keyf(r):
         return (
-            len(r.get("sources") or []),
-            int(r.get("citations") or 0),
-            int(r.get("year") or 0),
+            float(r.get("score") or 0.0),
+            _classic_key(r),
         )
     return sorted(records, key=keyf, reverse=True)
 
@@ -184,6 +310,8 @@ def to_md(records):
         if meta:
             bits.append("  \n   " + " · ".join(meta))
         tags = []
+        if r.get("score") is not None:
+            tags.append(f"score {r['score']}")
         if r.get("citations"):
             tags.append(f"cited {r['citations']}")
         tags.append(f"{r['sources_count']} sources: {', '.join(r['sources'])}")
@@ -201,6 +329,11 @@ def main():
     ap.add_argument("-o", "--out", default="corpus.json")
     ap.add_argument("--md", help="also write a human-readable markdown digest")
     ap.add_argument("--min-sources", type=int, default=1, help="drop papers found by fewer than N sources")
+    ap.add_argument("--ranking", choices=["layered", "classic"], default="layered",
+                    help="ranking mode: five-layer score (default) or legacy tuple sort")
+    ap.add_argument("--topic", default="", help="topic text used by the relevance layer")
+    ap.add_argument("--goal", choices=sorted(GOAL_WEIGHTS), default="survey",
+                    help="goal-specific weight profile for layered ranking")
     args = ap.parse_args()
 
     files = []
@@ -221,7 +354,7 @@ def main():
 
     merged = [finalize(r) for r in dedupe(raw)]
     merged = [r for r in merged if r["sources_count"] >= args.min_sources]
-    merged = rank(merged)
+    merged = rank(merged, ranking=args.ranking, topic=args.topic, goal=args.goal)
     for n, r in enumerate(merged, 1):
         r["rank"] = n  # 1-based corpus rank; PDF filenames + summary.md number by this
     print(f"  unique papers: {len(merged)}", file=sys.stderr)

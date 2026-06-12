@@ -16,6 +16,8 @@ own schemas via host tool discovery automatically.
 - `semantic_search` — natural-language similarity.
 - `citation_graph` — forward/backward citations from a seed arXiv id (snowballing).
 Fallback: `scripts/search_local.py arxiv "query"`.
+Recovery ladder: `scripts/resilient_search.py "query" --sources arxiv,semanticscholar,ddg`
+when MCP search fails or arXiv rate-limits.
 
 ## Bucket B — Semantic Scholar via Ai2 Asta (200M+ papers, citation counts)
 `asta` — Ai2 **Asta Scientific Corpus Tool**, the official Semantic Scholar MCP (remote
@@ -26,6 +28,7 @@ excerpts), `get_paper`, `get_citations` (forward cited-by — use for the snowba
 `read_semantic_paper`, `download_semantic`. Best source for **citation counts** → ranking
 and for finding the canonical version of a preprint. Fallback:
 `scripts/search_local.py semanticscholar "query"`.
+Recovery ladder: fall back to `resilient_search.py` with `semanticscholar,arxiv,ddg`.
 
 ## Bucket C — Crossref + OpenAlex (DOIs, published-version metadata)
 `paper-search-mcp`: `search_crossref`, `get_crossref_paper_by_doi`, `read_crossref_paper`,
@@ -51,6 +54,8 @@ Route by topic: cryptography → IACR; CS systems/ML venues → DBLP; econ/law �
 
 ## Bucket G — Web & grey literature
 `scripts/search_local.py ddg "query"` (DuckDuckGo: GitHub, blogs, theses, lab pages).
+`scripts/resilient_search.py "query" --sources ddg` retries and writes status for grey-lit
+fallback runs.
 `crawl4ai` (`<host-skill-venv>/bin/crwl "URL" -o markdown`) or the `firecrawl-*`
 skills to scrape a specific page → markdown. `WebSearch`/`WebFetch` as generic fallback.
 `mcp__github__search_repositories` / `search_code` for code/datasets behind a method.

@@ -158,6 +158,15 @@ do a massive literature search on mixture-of-experts routing from the last year,
 The skill also understands trigger phrases in other languages, so a request written in,
 say, Korean or Japanese routes to the same pipeline.
 
+If the request is underspecified, the skill asks a short mini-survey before fan-out:
+**field**, **goal**, and numeric **depth 1–5**. The same plan can be generated from a
+terminal:
+
+```bash
+python3 ~/.claude/skills/scholar-megasearch/scripts/plan_run.py \
+  "graph neural networks" --field cs-ml --goal survey --depth 3
+```
+
 Or invoke it as a **slash command**, optionally pinning the depth level (see
 [Depth levels](#depth-levels)) — prepend `depth=N`, `LN`, or a bare `1–5`, or use a
 phrase like `quick` / `exhaustive`. Everything after the command is the topic:
@@ -176,7 +185,13 @@ Or run the scripts directly:
 # merge per-source result files into one ranked corpus
 python3 ~/.claude/skills/scholar-megasearch/scripts/merge_corpus.py \
   ./literature_search/<topic>_<date>/raw \
-  -o corpus.json --md corpus.md --min-sources 2
+  -o corpus.json --md corpus.md --min-sources 2 \
+  --goal survey --topic "graph neural networks"
+
+# recover partial results when MCP sources are unavailable
+python3 ~/.claude/skills/scholar-megasearch/scripts/resilient_search.py \
+  "graph neural networks" --sources arxiv,semanticscholar,ddg \
+  -o raw/local_recovery.json --status raw/local_recovery.status.json
 
 # acquire original PDFs for the top 25 ranked papers
 python3 ~/.claude/skills/scholar-megasearch/scripts/fetch_pdfs.py \
@@ -209,6 +224,14 @@ wave's facets, looped until dry at L5. L4/L5 also emit a `--min-sources 2` short
 Higher levels spawn more subagents and cost more tokens — L5 is bounded only by the
 token budget. **PDF acquisition scales with the level too** — `fetch_pdfs.py --top` of
 10 / 30 / 50 / 100, and `all` (the whole corpus) at L5.
+
+### Ranking
+
+The default merge ranking is a five-layer weighted score: provenance, impact,
+recency, access/completeness, and topic relevance. Goal profiles (`survey`,
+`systematic`, `newest`, `seminal`, `implementation`, `pdf-corpus`) shift the layer
+weights while keeping the signals separate. Use `--ranking classic` to reproduce the
+older `sources_count, citations, year` sort.
 
 ## Outputs
 
