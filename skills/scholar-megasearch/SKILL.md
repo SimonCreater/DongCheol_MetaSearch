@@ -21,6 +21,26 @@ merge → synthesize pipeline. Each subagent owns one **source bucket** and sear
 parallel; results are merged into a single deduplicated, provenance-tracked, ranked
 corpus. Prefer this over single-source searches whenever breadth matters.
 
+Works in both Claude Code and Codex. Use the host's native tool discovery when MCP
+schemas are deferred: Claude Code may expose `ToolSearch`; Codex may expose
+`tool_search`. Use the skill directory from the loaded skill path for bundled scripts.
+Default install locations:
+
+- Claude Code: `~/.claude/skills/scholar-megasearch`, venv `~/.claude/skill_venv`.
+- Codex: `~/.agents/skills/scholar-megasearch`, venv `${CODEX_HOME:-~/.codex}/skill_venv`.
+
+Core engines expected when fully installed:
+
+- MCP servers: `arxiv-mcp-server`, `asta`, and `paper-search-mcp`.
+- Local fallbacks: `scripts/search_local.py {arxiv|semanticscholar|ddg}` and
+  `scripts/fetch_pdfs.py`.
+
+Source buckets A-G:
+
+- A arXiv; B Semantic Scholar via Ai2 Asta; C Crossref + OpenAlex.
+- D PubMed/PMC/bioRxiv/medRxiv/Europe PMC; E DOAJ/CORE/BASE/OpenAIRE/Zenodo/Unpaywall/HAL.
+- F DBLP/IACR/CiteSeerX/SSRN; G web, GitHub, grey literature, and page scraping.
+
 For the full source list and which tools live in each bucket, read
 `references/sources.md`. For the orchestration templates and the record schema, read
 `references/orchestration.md`.
@@ -61,7 +81,7 @@ pdf_url, url, citations, abstract, **source**, **query**) and does NOT dedupe. T
 
 ### 5. Merge into one corpus
 ```bash
-python3 ~/.claude/skills/scholar-megasearch/scripts/merge_corpus.py \
+python3 <skill-dir>/scripts/merge_corpus.py \
   ./literature_search/<slug>_<date>/raw \
   -o ./literature_search/<slug>_<date>/corpus.json \
   --md ./literature_search/<slug>_<date>/corpus.md
@@ -88,7 +108,7 @@ L4 → 100, **L5 → `all`** (every paper in the corpus). `--top all` (or `0`) t
 whole corpus; files are saved as `NN_<slug>.pdf` by `corpus.json` rank, matching the
 `[#NN]` in `summary.md`:
 ```bash
-python3 ~/.claude/skills/scholar-megasearch/scripts/fetch_pdfs.py \
+python3 <skill-dir>/scripts/fetch_pdfs.py \
   ./literature_search/<slug>_<date>/corpus.json \
   -o ./literature_search/<slug>_<date>/pdfs \
   --email you@example.com --top 30
@@ -99,7 +119,7 @@ direct, then Unpaywall OA API — verifying each file is a real PDF, and writes
 For those, fetch via the session MCP download tools (`paper-search-mcp.
 download_with_fallback`, source-specific `download_*`, or `download_scihub`) — a
 standalone script cannot reach MCP. To read extracted full text afterward, use the
-`read_*_paper` MCP tools or `pdfplumber`/`pymupdf` (`~/.claude/skill_venv/bin/`).
+`read_*_paper` MCP tools or `pdfplumber`/`pymupdf` from the installed host venv.
 See `references/sources.md` for the full acquisition tool list.
 
 ## Depth levels (L1–L5)
@@ -140,9 +160,9 @@ corroborated by ≥2 databases) alongside the full `corpus.json`.
 
 ## Fallback when MCP is unavailable
 If MCP servers are down/headless, searchers use `scripts/search_local.py {arxiv|
-semanticscholar|ddg} "query"` (runs on `~/.claude/skill_venv/bin/python3`). arXiv may
+semanticscholar|ddg} "query"` with the installed host venv Python. arXiv may
 rate-limit (HTTP 429) under heavy fan-out — stagger or lean on Asta/OpenAlex. The Asta
 (Semantic Scholar) MCP is remote and needs **no key** (a key only raises rate limits) —
 in headless/cron runs just ensure network access, or fall back to
-`search_local.py semanticscholar`. Never let claude.ai `Scholar_Gateway` be a bucket's
-only tool (absent in headless runs).
+`search_local.py semanticscholar`. Never let a host-specific scholar gateway be a
+bucket's only tool (absent in headless runs).

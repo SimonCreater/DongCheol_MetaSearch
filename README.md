@@ -1,7 +1,7 @@
 <h1 align="center">scholar-megasearch</h1>
 
 <p align="center">
-  <strong>Massive multi-source academic literature search for Claude Code.</strong><br>
+  <strong>Massive multi-source academic literature search for Claude Code and Codex.</strong><br>
   <em>One skill that fans out subagents across 20+ scholarly databases, merges everything into a single deduplicated corpus, and acquires the original PDFs.</em>
 </p>
 
@@ -24,6 +24,7 @@
 
 <p align="center">
   <img src="https://img.shields.io/badge/Claude%20Code-000000?style=flat-square&logo=anthropic&logoColor=white&labelColor=000000&cacheSeconds=3600" alt="Claude Code">
+  <img src="https://img.shields.io/badge/OpenAI%20Codex-000000?style=flat-square&logo=openai&logoColor=white&labelColor=000000&cacheSeconds=3600" alt="OpenAI Codex">
   <img src="https://img.shields.io/badge/Skill%20%2B%20MCP-000000?style=flat-square&labelColor=000000&color=000000&cacheSeconds=3600" alt="Skill plus MCP">
   <img src="https://img.shields.io/badge/Python-000000?style=flat-square&logo=python&logoColor=white&labelColor=000000&cacheSeconds=3600" alt="Python">
 </p>
@@ -41,7 +42,7 @@
 
 ---
 
-> **One sentence:** ask Claude Code for a topic, and get back a single ranked,
+> **One sentence:** ask Claude Code or Codex for a topic, and get back a single ranked,
 > deduplicated, provenance-tracked corpus of papers — with the PDFs already on disk.
 
 - 🔭 **20+ databases in one pass** — arXiv, Semantic Scholar, Crossref, OpenAlex, PubMed/PMC, bioRxiv/medRxiv, DOAJ, CORE, BASE, OpenAIRE, Zenodo, Unpaywall, HAL, DBLP, IACR, SSRN, CiteSeerX, Europe PMC, plus web/GitHub.
@@ -73,8 +74,8 @@ route exists.
 </p>
 
 Orchestration runs as a deterministic **Workflow** when available, and falls back to
-direct **Agent** fan-out otherwise. A domain → bucket routing table picks the right
-4–7 buckets per topic.
+direct **Agent/subagent** fan-out otherwise. A domain → bucket routing table picks the
+right 4–7 buckets per topic.
 
 ### Dedup & ranking
 
@@ -104,20 +105,37 @@ topic: "graph neural networks for molecular property prediction"
 ```bash
 git clone https://github.com/TaewoooPark/scholar-megasearch.git
 cd scholar-megasearch
-bash setup/install.sh you@example.com      # email used for Unpaywall OA + arXiv politeness
+
+# Claude Code (default, backwards-compatible)
+bash setup/install.sh you@example.com
+
+# Codex
+bash setup/install.sh --target codex --email you@example.com
+
+# Both hosts
+bash setup/install.sh --target both --email you@example.com
+
+# If your default python3 is too new/old, pin the venv interpreter explicitly
+PYTHON_BIN=python3.11 bash setup/install.sh --target codex --email you@example.com
 ```
 
-The script installs the skills into `~/.claude/skills/`, builds
-`~/.claude/skill_venv` and `~/.claude/paper_search_mcp_venv`, installs the local MCP
-servers (`paper-search-mcp` from git main — the PyPI build lacks Crossref/OpenAlex;
-`arxiv-mcp-server` via `uvx`), and writes `setup/mcp.servers.resolved.json`. Semantic
-Scholar (Bucket B) is the **remote** [Ai2 Asta MCP](https://allenai.org/asta/resources/mcp) —
-nothing to install, and it works **without a key** (rate-limited). For higher rate
-limits, request a free key and add a header to the `asta` entry:
-`"headers": { "x-api-key": "YOUR_ASTA_KEY" }` — paste the **literal** key (a `${ENV}`
-placeholder is sent verbatim and rejected with HTTP 403). Asta use is subject to Ai2's
-terms (see [Attribution](#attribution)). Merge that file's `mcpServers` entries into
-`~/.claude.json` and restart Claude Code.
+The installer preserves the original Claude Code behavior by default. For Claude Code,
+it installs skills into `~/.claude/skills/`, builds `~/.claude/skill_venv` and
+`~/.claude/paper_search_mcp_venv`, and writes `setup/mcp.servers.resolved.json` for
+`~/.claude.json`.
+
+For Codex, it installs personal skills into `$HOME/.agents/skills` by default, builds
+the search venvs under `${CODEX_HOME:-~/.codex}`, and writes
+`setup/mcp.servers.codex.resolved.toml` for `~/.codex/config.toml`. If the `codex`
+CLI is available, add `--register-codex-mcp` to have the installer run `codex mcp add`
+for `arxiv-mcp-server`, `asta`, and `paper-search-mcp`.
+
+Both hosts use `paper-search-mcp` from git main — the PyPI build lacks
+Crossref/OpenAlex — plus `arxiv-mcp-server` via `uvx`. Semantic Scholar (Bucket B) is
+the **remote** [Ai2 Asta MCP](https://allenai.org/asta/resources/mcp): nothing to
+install, and it works **without a key** (rate-limited). For higher rate limits, request
+a free key and add a literal `x-api-key` header to the `asta` entry. Asta use is
+subject to Ai2's terms (see [Attribution](#attribution)).
 
 **Requirements**
 
@@ -126,11 +144,11 @@ terms (see [Attribution](#attribution)). Merge that file's `mcpServers` entries 
 | Python | 3.11+ |
 | [`uv`](https://astral.sh/uv) | for `uvx arxiv-mcp-server` |
 | `git` | `pip install` of `paper-search-mcp` (git main) at install time |
-| Claude Code | the skill is triggered from within a session |
+| Claude Code or Codex | the skill is triggered from within a session |
 
 ## Usage
 
-Inside Claude Code, trigger the skill in natural language:
+Inside Claude Code or Codex, trigger the skill in natural language:
 
 ```
 search every database for graph neural networks and grab the PDFs
@@ -163,6 +181,9 @@ python3 ~/.claude/skills/scholar-megasearch/scripts/merge_corpus.py \
 # acquire original PDFs for the top 25 ranked papers
 python3 ~/.claude/skills/scholar-megasearch/scripts/fetch_pdfs.py \
   corpus.json -o ./pdfs --email you@example.com --top 25
+
+# Codex default script path is:
+# ~/.agents/skills/scholar-megasearch/scripts/
 ```
 
 ### Depth levels
@@ -243,7 +264,8 @@ scholar-megasearch/
 ├── setup/
 │   ├── install.sh            # skills + venvs + MCP servers + resolved config
 │   ├── requirements.txt      # pinned search/acquisition deps
-│   └── mcp.servers.json      # MCP registration template for ~/.claude.json
+│   ├── mcp.servers.json          # MCP template for ~/.claude.json
+│   └── mcp.servers.codex.toml    # MCP template for ~/.codex/config.toml
 └── skills/
     ├── scholar-megasearch/   # the skill
     │   ├── SKILL.md
@@ -267,8 +289,8 @@ time, and Semantic Scholar is the remote Ai2 Asta service. See [Attribution](#at
   Semantic Scholar / OpenAlex when arXiv pushes back.
 - **`paper-search-mcp` must be the git-main build** — the PyPI release omits
   Crossref and OpenAlex. The installer handles this.
-- **The claude.ai Scholar Gateway is best-effort** — it may be absent in
-  headless/cron runs, so it is never a bucket's only source.
+- **Host-specific scholar gateways are best-effort** — they may be absent in
+  headless/cron runs, so they are never a bucket's only source.
 - **Honest synthesis.** `summary.md` reports what was actually searched and which
   sources failed; nothing is invented to fill a gap.
 

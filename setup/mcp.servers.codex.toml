@@ -1,0 +1,21 @@
+# Codex MCP snippet for scholar-megasearch.
+# Merge this into ~/.codex/config.toml, or run:
+#   bash setup/install.sh --target codex --register-codex-mcp you@example.com
+#
+# For higher Semantic Scholar/Asta limits, request a key from Ai2 and add:
+#   http_headers = { "x-api-key" = "YOUR_ASTA_KEY" }
+# under [mcp_servers.asta].
+
+[mcp_servers.arxiv-mcp-server]
+command = "__UVX__"
+args = ["arxiv-mcp-server"]
+
+[mcp_servers.asta]
+url = "https://asta-tools.allen.ai/mcp/v1"
+
+[mcp_servers.paper-search-mcp]
+command = "__PSM_PYTHON__"
+args = ["-m", "paper_search_mcp.server"]
+
+[mcp_servers.paper-search-mcp.env]
+PAPER_SEARCH_MCP_UNPAYWALL_EMAIL = "__EMAIL__"

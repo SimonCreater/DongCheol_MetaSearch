@@ -13,11 +13,19 @@ description: >-
 A field-agnostic skill for searching scholarly papers from one machine. It queries
 arXiv and Semantic Scholar without an API key, falls back to DuckDuckGo for web/GitHub
 material, and downloads or extracts text from PDFs. The MCP servers
-(`arxiv-mcp-server`, Ai2 Asta) are used automatically inside a Claude Code session when
-registered.
+(`arxiv-mcp-server`, Ai2 Asta) are used automatically inside the current Claude Code
+or Codex session when registered.
 
 The examples below use placeholder topics (`<your topic>`, generic keyword strings).
 Swap in your own research terms — nothing here is tied to a particular field.
+
+This skill works in both Claude Code and Codex. Default install paths:
+
+- Claude Code venv: `~/.claude/skill_venv/bin/python3`
+- Codex venv: `${CODEX_HOME:-~/.codex}/skill_venv/bin/python3`
+
+Use the path that matches the current host. When MCP tools are deferred, load them with
+the host's native tool discovery (`ToolSearch` in Claude Code, `tool_search` in Codex).
 
 ## When to use
 
@@ -33,21 +41,21 @@ For an exhaustive, deduplicated sweep across 20+ databases, use the
 
 | Tool | Path / method | Purpose |
 |------|---------------|---------|
-| `arxiv` Python package | `~/.claude/skill_venv/bin/python3` | arXiv search |
-| `semanticscholar` Python package | `~/.claude/skill_venv/bin/python3` | Semantic Scholar search |
-| `arxiv-mcp-server` | registered MCP (uvx) | Claude Code MCP tools |
-| `asta` (Ai2 Asta, remote) | registered MCP | Claude Code MCP tools |
-| `paper-search-mcp` | `~/.claude/skill_venv` | arXiv + SS + PubMed unified |
-| `ddgs` | `~/.claude/skill_venv/bin/python3` | DuckDuckGo fallback search |
-| `pdfplumber` | `~/.claude/skill_venv/bin/python3` | PDF text extraction |
-| `crwl` (crawl4ai) | `~/.claude/skill_venv/bin/crwl` | Web crawling |
+| `arxiv` Python package | host `skill_venv/bin/python3` | arXiv search |
+| `semanticscholar` Python package | host `skill_venv/bin/python3` | Semantic Scholar search |
+| `arxiv-mcp-server` | registered MCP (uvx) | MCP tools |
+| `asta` (Ai2 Asta, remote) | registered MCP | MCP tools |
+| `paper-search-mcp` | host MCP venv | arXiv + SS + PubMed unified |
+| `ddgs` | host `skill_venv/bin/python3` | DuckDuckGo fallback search |
+| `pdfplumber` | host `skill_venv/bin/python3` | PDF text extraction |
+| `crwl` (crawl4ai) | host `skill_venv/bin/crwl` | Web crawling |
 
 ## Core command patterns
 
 ### 1. arXiv search (recommended)
 
 ```python
-~/.claude/skill_venv/bin/python3 << 'EOF'
+<host-skill-venv>/bin/python3 << 'EOF'
 import arxiv, json
 
 client = arxiv.Client()
@@ -74,7 +82,7 @@ EOF
 ### 2. Semantic Scholar search (200M+ papers)
 
 ```python
-~/.claude/skill_venv/bin/python3 << 'EOF'
+<host-skill-venv>/bin/python3 << 'EOF'
 from semanticscholar import SemanticScholar
 import json
 
@@ -102,7 +110,7 @@ EOF
 ### 3. DuckDuckGo fallback search (GitHub, blogs, etc.)
 
 ```python
-~/.claude/skill_venv/bin/python3 << 'EOF'
+<host-skill-venv>/bin/python3 << 'EOF'
 from ddgs import DDGS
 import json
 
@@ -117,7 +125,7 @@ EOF
 ### 4. Extract text from a PDF
 
 ```python
-~/.claude/skill_venv/bin/python3 << 'EOF'
+<host-skill-venv>/bin/python3 << 'EOF'
 import pdfplumber
 
 with pdfplumber.open("paper.pdf") as pdf:
@@ -132,13 +140,13 @@ EOF
 ### 5. URL → markdown scraping
 
 ```bash
-~/.claude/skill_venv/bin/crwl "https://arxiv.org/abs/2401.12345" -o markdown
+<host-skill-venv>/bin/crwl "https://arxiv.org/abs/2401.12345" -o markdown
 ```
 
 ### 6. Download an arXiv PDF
 
 ```python
-~/.claude/skill_venv/bin/python3 << 'EOF'
+<host-skill-venv>/bin/python3 << 'EOF'
 import arxiv, os
 
 client = arxiv.Client()
@@ -148,11 +156,11 @@ print(f"Downloaded: {paper.title}")
 EOF
 ```
 
-## Using MCP (inside a Claude Code session)
+## Using MCP (inside a host session)
 
-`arxiv-mcp-server` and `asta` (Ai2 Asta, Semantic Scholar) are registered with Claude
-Code. Inside a session, the MCP tools can be called automatically (load their schemas
-with `ToolSearch` first when they are deferred).
+`arxiv-mcp-server` and `asta` (Ai2 Asta, Semantic Scholar) are registered with the
+current host. Inside a session, the MCP tools can be called automatically (load their
+schemas with the host's tool discovery first when they are deferred).
 
 ## Search strategy guide
 

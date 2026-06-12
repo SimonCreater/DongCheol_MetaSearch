@@ -4,9 +4,10 @@ All search/read/download capabilities available in this environment, grouped int
 **buckets** that map cleanly onto one subagent each. A megasearch assigns 1 bucket
 per agent so they fan out without overlapping or rate-limiting each other.
 
-Most tools are **deferred** — load schemas with `ToolSearch` before calling, e.g.
-`ToolSearch({query: "select:mcp__paper-search-mcp__search_pubmed,mcp__paper-search-mcp__search_crossref", max_results: 10})`.
-Inside a Workflow, agents load their own schemas via ToolSearch automatically.
+Most tools are **deferred** — load schemas with the host's tool discovery before calling
+(`ToolSearch` in Claude Code, `tool_search` in Codex), e.g. ask for
+`paper-search-mcp search_pubmed search_crossref`. Inside a Workflow, agents load their
+own schemas via host tool discovery automatically.
 
 ## Bucket A — arXiv (preprints, physics/CS/math)
 `arxiv-mcp-server`: `search_papers`, `semantic_search`, `get_abstract`,
@@ -50,7 +51,7 @@ Route by topic: cryptography → IACR; CS systems/ML venues → DBLP; econ/law �
 
 ## Bucket G — Web & grey literature
 `scripts/search_local.py ddg "query"` (DuckDuckGo: GitHub, blogs, theses, lab pages).
-`crawl4ai` (`~/.claude/skill_venv/bin/crwl "URL" -o markdown`) or the `firecrawl-*`
+`crawl4ai` (`<host-skill-venv>/bin/crwl "URL" -o markdown`) or the `firecrawl-*`
 skills to scrape a specific page → markdown. `WebSearch`/`WebFetch` as generic fallback.
 `mcp__github__search_repositories` / `search_code` for code/datasets behind a method.
 
@@ -82,4 +83,4 @@ download_with_fallback` (tries multiple hosts) or source-specific `download_arxi
 the standalone script can't call.
 
 **Full-text read:** `read_*_paper` MCP tools, or `pdfplumber` / `pymupdf`
-(`~/.claude/skill_venv/bin/`) on the downloaded PDFs for text extraction.
+from the installed host venv on the downloaded PDFs for text extraction.

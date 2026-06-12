@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
 """Offline-friendly fallback search using the skill_venv packages (no MCP needed).
 
-Run with the venv interpreter:
+Run with the host venv interpreter:
     ~/.claude/skill_venv/bin/python3 search_local.py SOURCE "query" [-n 30] [-o out.json]
+    ${CODEX_HOME:-~/.codex}/skill_venv/bin/python3 search_local.py SOURCE "query" [-n 30] [-o out.json]
 
 SOURCE is one of: arxiv | semanticscholar | ddg
 Emits a JSON list of records in the corpus schema (title, authors, year, doi,

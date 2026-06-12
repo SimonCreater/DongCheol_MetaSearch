@@ -12,14 +12,16 @@ Subagents return a JSON list of records. All fields optional except a `title`.
 ```
 
 A searcher agent's job: take its assigned bucket + the facet subqueries, run each
-query through its bucket's tools (load schemas via ToolSearch first), normalize hits
+query through its bucket's tools (load schemas via the host's tool discovery first),
+normalize hits
 into the schema, and **write one JSON file** to `<run>/raw/<bucket>.json`. It must NOT
 dedupe or rank — that is `merge_corpus.py`'s job.
 
 ## Preferred: Workflow tool (requires "workflow" opt-in)
 
 Use this when the user opted into workflows. Buckets fan out, each searcher writes its
-raw file, then a single merge + synthesis. Searcher agents reach MCP tools via ToolSearch.
+raw file, then a single merge + synthesis. Searcher agents reach MCP tools via the
+host's tool discovery (`ToolSearch` in Claude Code, `tool_search` in Codex).
 The merge runs as a Bash step after the workflow returns (workflow agents have no shared
 FS guarantees for the script) — so have each agent RETURN its records too, via schema.
 
@@ -61,7 +63,7 @@ const perBucket = await parallel(args.buckets.map(b => () =>
   agent(
     `You are the "${b.key}" searcher in a literature megasearch on: ${args.topic}\n` +
     `${b.prompt}${task}\n\n` +
-    `Load tool schemas with ToolSearch first. Aim for ~${CAP} hits per subquery/seed. ` +
+    `Load tool schemas with the host tool discovery first. Aim for ~${CAP} hits per subquery/seed. ` +
     `Set "source" to a short tag on every record. Return ALL records (do not dedupe).`,
     { label: `search:${b.key}`, phase: 'Search', schema: REC_SCHEMA }
   ).then(r => ({ bucket: b.key, results: (r && r.results) || [] }))
@@ -88,7 +90,7 @@ prompt as above and instruct it to **write its raw file directly** to
 
 Agent prompt skeleton (one per bucket):
 > You are the "{bucket}" searcher. Topic: {topic}. Tools/bucket: {bucket tools from
-> sources.md}. Load schemas via ToolSearch. Run each subquery: {facets}. Aim for ~{cap}
+> sources.md}. Load schemas via host tool discovery. Run each subquery: {facets}. Aim for ~{cap}
 > hits per subquery. Normalize every hit to the record schema (set source+query). Write the
 > JSON list to `{run}/raw/{bucket}.json`. Report only the count written.
 
