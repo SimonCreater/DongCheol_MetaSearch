@@ -1,0 +1,23 @@
+{
+  "_comment": "Merge these entries into the mcpServers block of ~/.claude.json (or use `claude mcp add`). Paths assume the locations created by install.sh; install.sh writes a resolved copy to setup/mcp.servers.resolved.json (HOME + email substituted). 'asta' is Ai2's official Semantic Scholar MCP (Asta Scientific Corpus Tool) — REMOTE, nothing to install, and it works WITHOUT a key (rate-limited). For higher rate limits, request a free key at https://allenai.org/asta/resources/mcp and add a header to the asta entry: \"headers\": { \"x-api-key\": \"YOUR_ASTA_KEY\" } (paste the literal key — Claude Code does not expand ${ENV} placeholders here, so a placeholder would be sent verbatim and rejected with HTTP 403). Asta use is subject to Ai2's License Agreement (https://allenai.org/asta-corpus-license) + Terms of Use (https://allenai.org/terms); Semantic Scholar data is ODC-BY (attribute Semantic Scholar, do not redistribute the raw data).",
+  "mcpServers": {
+    "arxiv-mcp-server": {
+      "type": "stdio",
+      "command": "HOME/.local/bin/uvx",
+      "args": ["arxiv-mcp-server"],
+      "env": {}
+    },
+    "asta": {
+      "type": "http",
+      "url": "https://asta-tools.allen.ai/mcp/v1"
+    },
+    "paper-search-mcp": {
+      "type": "stdio",
+      "command": "HOME/.claude/paper_search_mcp_venv/bin/python",
+      "args": ["-m", "paper_search_mcp.server"],
+      "env": {
+        "PAPER_SEARCH_MCP_UNPAYWALL_EMAIL": "you@example.com"
+      }
+    }
+  }
+}

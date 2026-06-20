@@ -1,0 +1,7 @@
+__pycache__/
+*.pyc
+.DS_Store
+setup/mcp.servers.resolved.json
+setup/mcp.servers.codex.resolved.toml
+literature_search/
+*.skill
