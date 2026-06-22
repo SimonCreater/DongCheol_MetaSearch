@@ -1,0 +1,2082 @@
+{
+  "meta": {
+    "source": "[붙임] Computer Science 분야 우수 국제학술대회 목록_4단계 BK21.pdf",
+    "description": "BK21 4단계 CS 분야 우수 국제학술대회 인정 IF 목록",
+    "scale_max": 4,
+    "count": 188,
+    "scoring_rule": "regular=if, short=if-1, spotlight=if-2, poster=0"
+  },
+  "venues": [
+    {
+      "code": "BKCSA001",
+      "acronym": "AAAI",
+      "name": "AAAI Conference on Artificial Intelligence",
+      "if": 4,
+      "type": "regular",
+      "match_acronyms": [
+        "aaai"
+      ],
+      "match_name": "aaai conference on artificial intelligence"
+    },
+    {
+      "code": "BKCSA002",
+      "acronym": "CCS",
+      "name": "ACM Conference on Computer and Communications Security",
+      "if": 4,
+      "type": "regular",
+      "match_acronyms": [
+        "ccs"
+      ],
+      "match_name": "acm conference on computer and communications security"
+    },
+    {
+      "code": "BKCSA003",
+      "acronym": "CHI",
+      "name": "ACM Conference on Human Factors in Computing Systems",
+      "if": 4,
+      "type": "regular",
+      "match_acronyms": [
+        "chi"
+      ],
+      "match_name": "acm conference on human factors in computing systems"
+    },
+    {
+      "code": "BKCSA004",
+      "acronym": "MobiCom",
+      "name": "ACM International Conference on Mobile Computing and Networking",
+      "if": 4,
+      "type": "regular",
+      "match_acronyms": [
+        "mobicom"
+      ],
+      "match_name": "acm international conference on mobile computing and networking"
+    },
+    {
+      "code": "BKCSA005",
+      "acronym": "MM",
+      "name": "ACM Multimedia Conference",
+      "if": 4,
+      "type": "regular",
+      "match_acronyms": [
+        "mm"
+      ],
+      "match_name": "acm multimedia conference"
+    },
+    {
+      "code": "BKCSA006",
+      "acronym": "SIGCOMM",
+      "name": "ACM SIGCOMM Conference",
+      "if": 4,
+      "type": "regular",
+      "match_acronyms": [
+        "sigcomm"
+      ],
+      "match_name": "acm sigcomm conference"
+    },
+    {
+      "code": "BKCSA007",
+      "acronym": "SIGIR",
+      "name": "ACM SIGIR Conference on Information Retrieval",
+      "if": 4,
+      "type": "regular",
+      "match_acronyms": [
+        "sigir"
+      ],
+      "match_name": "acm sigir conference on information retrieval"
+    },
+    {
+      "code": "BKCSA008",
+      "acronym": "KDD",
+      "name": "ACM SIGKDD Conference on Knowledge Discovery and Data Mining",
+      "if": 4,
+      "type": "regular",
+      "match_acronyms": [
+        "kdd"
+      ],
+      "match_name": "acm sigkdd conference on knowledge discovery and data mining"
+    },
+    {
+      "code": "BKCSA009",
+      "acronym": "FSE",
+      "name": "ACM SIGSOFT Symposium on the Foundations of Software Engineering",
+      "if": 4,
+      "type": "regular",
+      "match_acronyms": [
+        "fse"
+      ],
+      "match_name": "acm sigsoft symposium on the foundations of software engineering"
+    },
+    {
+      "code": "BKCSA010",
+      "acronym": "SOSP",
+      "name": "ACM Symposium on Operating Systems Principles",
+      "if": 4,
+      "type": "regular",
+      "match_acronyms": [
+        "sosp"
+      ],
+      "match_name": "acm symposium on operating systems principles"
+    },
+    {
+      "code": "BKCSA011",
+      "acronym": "STOC",
+      "name": "ACM Symposium on Theory of Computing",
+      "if": 4,
+      "type": "regular",
+      "match_acronyms": [
+        "stoc"
+      ],
+      "match_name": "acm symposium on theory of computing"
+    },
+    {
+      "code": "BKCSA012",
+      "acronym": "ACL",
+      "name": "Annual Meeting of the Association for Computational Linguistics",
+      "if": 4,
+      "type": "regular",
+      "match_acronyms": [
+        "acl"
+      ],
+      "match_name": "annual meeting of the association for computational linguistics"
+    },
+    {
+      "code": "BKCSA013",
+      "acronym": "ASPLOS",
+      "name": "Architectural Support for Programming Languages and Operating Systems",
+      "if": 4,
+      "type": "regular",
+      "match_acronyms": [
+        "asplos"
+      ],
+      "match_name": "architectural support for programming languages and operating systems"
+    },
+    {
+      "code": "BKCSA014",
+      "acronym": "CVPR",
+      "name": "Conference on Computer Vision and Pattern Recognition",
+      "if": 4,
+      "type": "regular",
+      "match_acronyms": [
+        "cvpr"
+      ],
+      "match_name": "conference on computer vision and pattern recognition"
+    },
+    {
+      "code": "BKCSA015",
+      "acronym": "NIPS",
+      "name": "Conference on Neural Information Processing Systems",
+      "if": 4,
+      "type": "regular",
+      "match_acronyms": [
+        "nips"
+      ],
+      "match_name": "conference on neural information processing systems"
+    },
+    {
+      "code": "BKCSA016",
+      "acronym": "OOPSLA",
+      "name": "Conference on Object-Oriented Programming, System, Languages, and Applications",
+      "if": 4,
+      "type": "regular",
+      "match_acronyms": [
+        "oopsla"
+      ],
+      "match_name": "conference on object oriented programming system languages and applications"
+    },
+    {
+      "code": "BKCSA017",
+      "acronym": "INFOCOM",
+      "name": "IEEE Conference on Computer Communications",
+      "if": 4,
+      "type": "regular",
+      "match_acronyms": [
+        "infocom"
+      ],
+      "match_name": "ieee conference on computer communications"
+    },
+    {
+      "code": "BKCSA018",
+      "acronym": "HPCA",
+      "name": "IEEE International Symposium on High-Performance Computer Architecture",
+      "if": 4,
+      "type": "regular",
+      "match_acronyms": [
+        "hpca"
+      ],
+      "match_name": "ieee international symposium on high performance computer architecture"
+    },
+    {
+      "code": "BKCSA019",
+      "acronym": "RTSS",
+      "name": "IEEE Real-Time Systems Symposium",
+      "if": 4,
+      "type": "regular",
+      "match_acronyms": [
+        "rtss"
+      ],
+      "match_name": "ieee real time systems symposium"
+    },
+    {
+      "code": "BKCSA020",
+      "acronym": "FOCS",
+      "name": "IEEE Symposium on Foundations of Computer Science",
+      "if": 4,
+      "type": "regular",
+      "match_acronyms": [
+        "focs"
+      ],
+      "match_name": "ieee symposium on foundations of computer science"
+    },
+    {
+      "code": "BKCSA021",
+      "acronym": "S&P",
+      "name": "IEEE Symposium on Security and Privacy",
+      "if": 4,
+      "type": "regular",
+      "match_acronyms": [
+        "s p",
+        "sp"
+      ],
+      "match_name": "ieee symposium on security and privacy"
+    },
+    {
+      "code": "BKCSA022",
+      "acronym": "VIS",
+      "name": "IEEE Visualization",
+      "if": 4,
+      "type": "regular",
+      "match_acronyms": [
+        "vis"
+      ],
+      "match_name": "ieee visualization"
+    },
+    {
+      "code": "BKCSA023",
+      "acronym": "MICRO",
+      "name": "IEEE/ACM International Symposium on Microarchitecture",
+      "if": 4,
+      "type": "regular",
+      "match_acronyms": [
+        "micro"
+      ],
+      "match_name": "ieee acm international symposium on microarchitecture"
+    },
+    {
+      "code": "BKCSA024",
+      "acronym": "SIGGRAPH",
+      "name": "International Conference on Computer Graphics and Interactive Techniques",
+      "if": 4,
+      "type": "regular",
+      "match_acronyms": [
+        "siggraph"
+      ],
+      "match_name": "international conference on computer graphics and interactive techniques"
+    },
+    {
+      "code": "BKCSA025",
+      "acronym": "ICCV",
+      "name": "International Conference on Computer Vision",
+      "if": 4,
+      "type": "regular",
+      "match_acronyms": [
+        "iccv"
+      ],
+      "match_name": "international conference on computer vision"
+    },
+    {
+      "code": "BKCSA026",
+      "acronym": "CAV",
+      "name": "International Conference on Computer-Aided Verification",
+      "if": 4,
+      "type": "regular",
+      "match_acronyms": [
+        "cav"
+      ],
+      "match_name": "international conference on computer aided verification"
+    },
+    {
+      "code": "BKCSA027",
+      "acronym": "ICML",
+      "name": "International Conference on Machine Learning",
+      "if": 4,
+      "type": "regular",
+      "match_acronyms": [
+        "icml"
+      ],
+      "match_name": "international conference on machine learning"
+    },
+    {
+      "code": "BKCSA028",
+      "acronym": "SIGMOD",
+      "name": "International Conference on Management of Data",
+      "if": 4,
+      "type": "regular",
+      "match_acronyms": [
+        "sigmod"
+      ],
+      "match_name": "international conference on management of data"
+    },
+    {
+      "code": "BKCSA029",
+      "acronym": "ICSE",
+      "name": "International Conference on Software Engineering",
+      "if": 4,
+      "type": "regular",
+      "match_acronyms": [
+        "icse"
+      ],
+      "match_name": "international conference on software engineering"
+    },
+    {
+      "code": "BKCSA030",
+      "acronym": "EUROCRYPT",
+      "name": "International Conference on the Theory and Applications of Cryptographic Techniques",
+      "if": 4,
+      "type": "regular",
+      "match_acronyms": [
+        "eurocrypt"
+      ],
+      "match_name": "international conference on the theory and applications of cryptographic techniques"
+    },
+    {
+      "code": "BKCSA031",
+      "acronym": "VLDB/PVLDB",
+      "name": "International Conference on Very Large Databases",
+      "if": 4,
+      "type": "regular",
+      "match_acronyms": [
+        "vldb pvldb",
+        "vldbpvldb"
+      ],
+      "match_name": "international conference on very large databases"
+    },
+    {
+      "code": "BKCSA032",
+      "acronym": "CRYPTO",
+      "name": "International Cryptology Conference",
+      "if": 4,
+      "type": "regular",
+      "match_acronyms": [
+        "crypto"
+      ],
+      "match_name": "international cryptology conference"
+    },
+    {
+      "code": "BKCSA033",
+      "acronym": "IJCAI",
+      "name": "International Joint Conference on Artificial Intelligence",
+      "if": 4,
+      "type": "regular",
+      "match_acronyms": [
+        "ijcai"
+      ],
+      "match_name": "international joint conference on artificial intelligence"
+    },
+    {
+      "code": "BKCSA034",
+      "acronym": "ISCA",
+      "name": "International Symposium on Computer Architecture",
+      "if": 4,
+      "type": "regular",
+      "match_acronyms": [
+        "isca"
+      ],
+      "match_name": "international symposium on computer architecture"
+    },
+    {
+      "code": "BKCSA035",
+      "acronym": "WWW",
+      "name": "International World Wide web Conference",
+      "if": 4,
+      "type": "regular",
+      "match_acronyms": [
+        "www"
+      ],
+      "match_name": "international world wide web conference"
+    },
+    {
+      "code": "BKCSA036",
+      "acronym": "PLDI",
+      "name": "SIGPLAN Conference on Programming Language Design and Implementation",
+      "if": 4,
+      "type": "regular",
+      "match_acronyms": [
+        "pldi"
+      ],
+      "match_name": "sigplan conference on programming language design and implementation"
+    },
+    {
+      "code": "BKCSA037",
+      "acronym": "POPL",
+      "name": "Symposium on Principles of Programming Languages",
+      "if": 4,
+      "type": "regular",
+      "match_acronyms": [
+        "popl"
+      ],
+      "match_name": "symposium on principles of programming languages"
+    },
+    {
+      "code": "BKCSA038",
+      "acronym": "NSDI",
+      "name": "USENIX Symposium on Networked Systems Design and Implementation",
+      "if": 4,
+      "type": "regular",
+      "match_acronyms": [
+        "nsdi"
+      ],
+      "match_name": "usenix symposium on networked systems design and implementation"
+    },
+    {
+      "code": "BKCSA039",
+      "acronym": "OSDI",
+      "name": "USENIX Symposium on Operating Systems Design and Implementation",
+      "if": 4,
+      "type": "regular",
+      "match_acronyms": [
+        "osdi"
+      ],
+      "match_name": "usenix symposium on operating systems design and implementation"
+    },
+    {
+      "code": "BKCSA040",
+      "acronym": "CSCW",
+      "name": "ACM Conference on Computer-Supported Cooperative Work",
+      "if": 3,
+      "type": "regular",
+      "match_acronyms": [
+        "cscw"
+      ],
+      "match_name": "acm conference on computer supported cooperative work"
+    },
+    {
+      "code": "BKCSA041",
+      "acronym": "SenSys",
+      "name": "ACM Conference on Embedded Networked Sensor Systems",
+      "if": 3,
+      "type": "regular",
+      "match_acronyms": [
+        "sensys"
+      ],
+      "match_name": "acm conference on embedded networked sensor systems"
+    },
+    {
+      "code": "BKCSA042",
+      "acronym": "CIKM",
+      "name": "ACM Conference on Information and Knowledge Management",
+      "if": 3,
+      "type": "regular",
+      "match_acronyms": [
+        "cikm"
+      ],
+      "match_name": "acm conference on information and knowledge management"
+    },
+    {
+      "code": "BKCSA043",
+      "acronym": "MobiSys",
+      "name": "ACM International Conference on Mobile Systems, Application and Services",
+      "if": 3,
+      "type": "regular",
+      "match_acronyms": [
+        "mobisys"
+      ],
+      "match_name": "acm international conference on mobile systems application and services"
+    },
+    {
+      "code": "BKCSA044",
+      "acronym": "WSDM",
+      "name": "ACM International Conference on web Search and Data Mining",
+      "if": 3,
+      "type": "regular",
+      "match_acronyms": [
+        "wsdm"
+      ],
+      "match_name": "acm international conference on web search and data mining"
+    },
+    {
+      "code": "BKCSA045",
+      "acronym": "UbiComp",
+      "name": "ACM International Joint Conference on Pervasive and Ubiquitous Computing",
+      "if": 3,
+      "type": "regular",
+      "match_acronyms": [
+        "ubicomp"
+      ],
+      "match_name": "acm international joint conference on pervasive and ubiquitous computing"
+    },
+    {
+      "code": "BKCSA046",
+      "acronym": "MobiHoc",
+      "name": "ACM International Symposium on Mobile Ad Hoc Networking and Computing",
+      "if": 3,
+      "type": "regular",
+      "match_acronyms": [
+        "mobihoc"
+      ],
+      "match_name": "acm international symposium on mobile ad hoc networking and computing"
+    },
+    {
+      "code": "BKCSA047",
+      "acronym": "SIGMETRICS",
+      "name": "ACM SIGMETRICS International Conference on Measurement and Modeling of Computer Systems",
+      "if": 3,
+      "type": "regular",
+      "match_acronyms": [
+        "sigmetrics"
+      ],
+      "match_name": "acm sigmetrics international conference on measurement and modeling of computer systems"
+    },
+    {
+      "code": "BKCSA048",
+      "acronym": "PPoPP",
+      "name": "ACM SIGPLAN Symposium on Principles and Practice of Parallel Programming",
+      "if": 3,
+      "type": "regular",
+      "match_acronyms": [
+        "ppopp"
+      ],
+      "match_name": "acm sigplan symposium on principles and practice of parallel programming"
+    },
+    {
+      "code": "BKCSA049",
+      "acronym": "SPAA",
+      "name": "ACM Symposium on Parallelism in Algorithms and Architectures",
+      "if": 3,
+      "type": "regular",
+      "match_acronyms": [
+        "spaa"
+      ],
+      "match_name": "acm symposium on parallelism in algorithms and architectures"
+    },
+    {
+      "code": "BKCSA050",
+      "acronym": "PODS",
+      "name": "ACM Symposium on Principles of Database Systems",
+      "if": 3,
+      "type": "regular",
+      "match_acronyms": [
+        "pods"
+      ],
+      "match_name": "acm symposium on principles of database systems"
+    },
+    {
+      "code": "BKCSA051",
+      "acronym": "PODC",
+      "name": "ACM Symposium on Principles of Distributed Computing",
+      "if": 3,
+      "type": "regular",
+      "match_acronyms": [
+        "podc"
+      ],
+      "match_name": "acm symposium on principles of distributed computing"
+    },
+    {
+      "code": "BKCSA052",
+      "acronym": "IPSN",
+      "name": "ACM/IEEE Information Processing in Sensor Networks",
+      "if": 3,
+      "type": "regular",
+      "match_acronyms": [
+        "ipsn"
+      ],
+      "match_name": "acm ieee information processing in sensor networks"
+    },
+    {
+      "code": "BKCSA053",
+      "acronym": "SC",
+      "name": "ACM/IEEE International Conference for High Performance Computing, Networking, Storage, and Analysis",
+      "if": 3,
+      "type": "regular",
+      "match_acronyms": [
+        "sc"
+      ],
+      "match_name": "acm ieee international conference for high performance computing networking storage and analysis"
+    },
+    {
+      "code": "BKCSA054",
+      "acronym": "LICS",
+      "name": "ACM/IEEE Symposium on Logic in Computer Science",
+      "if": 3,
+      "type": "regular",
+      "match_acronyms": [
+        "lics"
+      ],
+      "match_name": "acm ieee symposium on logic in computer science"
+    },
+    {
+      "code": "BKCSA055",
+      "acronym": "SODA",
+      "name": "ACM-SIAM Symposium on Discrete Algorithms",
+      "if": 3,
+      "type": "regular",
+      "match_acronyms": [
+        "soda"
+      ],
+      "match_name": "acm siam symposium on discrete algorithms"
+    },
+    {
+      "code": "BKCSA056",
+      "acronym": "COLT",
+      "name": "Annual Conference on Computational Learning Theory",
+      "if": 3,
+      "type": "regular",
+      "match_acronyms": [
+        "colt"
+      ],
+      "match_name": "annual conference on computational learning theory"
+    },
+    {
+      "code": "BKCSA057",
+      "acronym": "UAI",
+      "name": "Conference on Uncertainty in Artificial Intelligence",
+      "if": 3,
+      "type": "regular",
+      "match_acronyms": [
+        "uai"
+      ],
+      "match_name": "conference on uncertainty in artificial intelligence"
+    },
+    {
+      "code": "BKCSA058",
+      "acronym": "DAC",
+      "name": "Design Automation Conference",
+      "if": 3,
+      "type": "regular",
+      "match_acronyms": [
+        "dac"
+      ],
+      "match_name": "design automation conference"
+    },
+    {
+      "code": "BKCSA059",
+      "acronym": "EMNLP",
+      "name": "Empirical Methods in Natural Language Processing",
+      "if": 3,
+      "type": "regular",
+      "match_acronyms": [
+        "emnlp"
+      ],
+      "match_name": "empirical methods in natural language processing"
+    },
+    {
+      "code": "BKCSA060",
+      "acronym": "ICDE",
+      "name": "IEEE International Conference on Data Engineering",
+      "if": 3,
+      "type": "regular",
+      "match_acronyms": [
+        "icde"
+      ],
+      "match_name": "ieee international conference on data engineering"
+    },
+    {
+      "code": "BKCSA061",
+      "acronym": "ICDM",
+      "name": "IEEE International Conference on Data Mining",
+      "if": 3,
+      "type": "regular",
+      "match_acronyms": [
+        "icdm"
+      ],
+      "match_name": "ieee international conference on data mining"
+    },
+    {
+      "code": "BKCSA062",
+      "acronym": "ICDCS",
+      "name": "IEEE International Conference on Distributed Computing Systems",
+      "if": 3,
+      "type": "regular",
+      "match_acronyms": [
+        "icdcs"
+      ],
+      "match_name": "ieee international conference on distributed computing systems"
+    },
+    {
+      "code": "BKCSA063",
+      "acronym": "PerCom",
+      "name": "IEEE International Conference on Pervasive Computing and Communications",
+      "if": 3,
+      "type": "regular",
+      "match_acronyms": [
+        "percom"
+      ],
+      "match_name": "ieee international conference on pervasive computing and communications"
+    },
+    {
+      "code": "BKCSA064",
+      "acronym": "ASE",
+      "name": "IEEE/ACM International Conference on Automated Software Engineering",
+      "if": 3,
+      "type": "regular",
+      "match_acronyms": [
+        "ase"
+      ],
+      "match_name": "ieee acm international conference on automated software engineering"
+    },
+    {
+      "code": "BKCSA065",
+      "acronym": "ICCAD",
+      "name": "IEEE/ACM International Conference on Computer-Aided Design",
+      "if": 3,
+      "type": "regular",
+      "match_acronyms": [
+        "iccad"
+      ],
+      "match_name": "ieee acm international conference on computer aided design"
+    },
+    {
+      "code": "BKCSA066",
+      "acronym": "CoNEXT",
+      "name": "International Conference on emerging Networking EXperiments and Technologies",
+      "if": 3,
+      "type": "regular",
+      "match_acronyms": [
+        "conext"
+      ],
+      "match_name": "international conference on emerging networking experiments and technologies"
+    },
+    {
+      "code": "BKCSA067",
+      "acronym": "PACT",
+      "name": "International Conference on Parallel Architectures and Compilation Techniques",
+      "if": 3,
+      "type": "regular",
+      "match_acronyms": [
+        "pact"
+      ],
+      "match_name": "international conference on parallel architectures and compilation techniques"
+    },
+    {
+      "code": "BKCSA068",
+      "acronym": "KR",
+      "name": "International Conference on Principles of Knowledge Representation and Reasoning",
+      "if": 3,
+      "type": "regular",
+      "match_acronyms": [
+        "kr"
+      ],
+      "match_name": "international conference on principles of knowledge representation and reasoning"
+    },
+    {
+      "code": "BKCSA069",
+      "acronym": "ATC",
+      "name": "USENIX Annual Technical Conference",
+      "if": 3,
+      "type": "regular",
+      "match_acronyms": [
+        "atc"
+      ],
+      "match_name": "usenix annual technical conference"
+    },
+    {
+      "code": "BKCSA070",
+      "acronym": "FAST",
+      "name": "USENIX Conference on File and Storage Technologies",
+      "if": 3,
+      "type": "regular",
+      "match_acronyms": [
+        "fast"
+      ],
+      "match_name": "usenix conference on file and storage technologies"
+    },
+    {
+      "code": "BKCSA071",
+      "acronym": "Security",
+      "name": "USENIX Security Symposium",
+      "if": 3,
+      "type": "regular",
+      "match_acronyms": [
+        "security"
+      ],
+      "match_name": "usenix security symposium"
+    },
+    {
+      "code": "BKCSA072",
+      "acronym": "SoCG",
+      "name": "(ACM) Annual Symposium on Computational Geometry",
+      "if": 2,
+      "type": "regular",
+      "match_acronyms": [
+        "socg"
+      ],
+      "match_name": "acm annual symposium on computational geometry"
+    },
+    {
+      "code": "BKCSA073",
+      "acronym": "CCC",
+      "name": "(IEEE Conference on) Computational Complexity Conference",
+      "if": 2,
+      "type": "regular",
+      "match_acronyms": [
+        "ccc"
+      ],
+      "match_name": "ieee conference on computational complexity conference"
+    },
+    {
+      "code": "BKCSA074",
+      "acronym": "ACSAC",
+      "name": "ACM Annual Computer Security Applications Conference",
+      "if": 2,
+      "type": "regular",
+      "match_acronyms": [
+        "acsac"
+      ],
+      "match_name": "acm annual computer security applications conference"
+    },
+    {
+      "code": "BKCSA075",
+      "acronym": "EMSOFT",
+      "name": "ACM Conference on Embedded Software",
+      "if": 2,
+      "type": "regular",
+      "match_acronyms": [
+        "emsoft"
+      ],
+      "match_name": "acm conference on embedded software"
+    },
+    {
+      "code": "BKCSA076",
+      "acronym": "IUI",
+      "name": "ACM International Conference on Intelligent User Interfaces",
+      "if": 2,
+      "type": "regular",
+      "match_acronyms": [
+        "iui"
+      ],
+      "match_name": "acm international conference on intelligent user interfaces"
+    },
+    {
+      "code": "BKCSA077",
+      "acronym": "ICS",
+      "name": "ACM International Conference on Supercomputing",
+      "if": 2,
+      "type": "regular",
+      "match_acronyms": [
+        "ics"
+      ],
+      "match_name": "acm international conference on supercomputing"
+    },
+    {
+      "code": "BKCSA078",
+      "acronym": "ISSTA",
+      "name": "ACM International Symposium on Software Testing and Analysis",
+      "if": 2,
+      "type": "regular",
+      "match_acronyms": [
+        "issta"
+      ],
+      "match_name": "acm international symposium on software testing and analysis"
+    },
+    {
+      "code": "BKCSA079",
+      "acronym": "IMC",
+      "name": "ACM Internet Measurement Conference",
+      "if": 2,
+      "type": "regular",
+      "match_acronyms": [
+        "imc"
+      ],
+      "match_name": "acm internet measurement conference"
+    },
+    {
+      "code": "BKCSA080",
+      "acronym": "LCTES",
+      "name": "ACM SIGPLAN/SIGBED Conference on Languages, Compilers and Tools for Embedded Systems",
+      "if": 2,
+      "type": "regular",
+      "match_acronyms": [
+        "lctes"
+      ],
+      "match_name": "acm sigplan sigbed conference on languages compilers and tools for embedded systems"
+    },
+    {
+      "code": "BKCSA081",
+      "acronym": "UIST",
+      "name": "ACM Symposium on User Interface Software and Technology",
+      "if": 2,
+      "type": "regular",
+      "match_acronyms": [
+        "uist"
+      ],
+      "match_name": "acm symposium on user interface software and technology"
+    },
+    {
+      "code": "BKCSA082",
+      "acronym": "MODELS",
+      "name": "ACM/IEEE International Conference on Model Driven Engineering Languages and Systems",
+      "if": 2,
+      "type": "regular",
+      "match_acronyms": [
+        "models"
+      ],
+      "match_name": "acm ieee international conference on model driven engineering languages and systems"
+    },
+    {
+      "code": "BKCSA083",
+      "acronym": "MIDDLEWARE",
+      "name": "ACM/IFIP/USENIX International Middleware Conference",
+      "if": 2,
+      "type": "regular",
+      "match_acronyms": [
+        "middleware"
+      ],
+      "match_name": "acm ifip usenix international middleware conference"
+    },
+    {
+      "code": "BKCSA084",
+      "acronym": "CogSci",
+      "name": "Annual Meeting of the Cognitive Science Society",
+      "if": 2,
+      "type": "regular",
+      "match_acronyms": [
+        "cogsci"
+      ],
+      "match_name": "annual meeting of the cognitive science society"
+    },
+    {
+      "code": "BKCSA085",
+      "acronym": "NAACL/HLT",
+      "name": "Conference of the North American Chapter of the Association for Computational Linguistics: Human Language Technologies",
+      "if": 2,
+      "type": "regular",
+      "match_acronyms": [
+        "naacl hlt",
+        "naaclhlt"
+      ],
+      "match_name": "conference of the north american chapter of the association for computational linguistics human language technologies"
+    },
+    {
+      "code": "BKCSA086",
+      "acronym": "CVPR",
+      "name": "Conference on Computer Vision and Pattern Recognition (Spotlight)",
+      "if": 2,
+      "type": "spotlight",
+      "match_acronyms": [
+        "cvpr"
+      ],
+      "match_name": "conference on computer vision and pattern recognition spotlight"
+    },
+    {
+      "code": "BKCSA087",
+      "acronym": "NIPS",
+      "name": "Conference on Neural Information Processing Systems (Spotlight)",
+      "if": 2,
+      "type": "spotlight",
+      "match_acronyms": [
+        "nips"
+      ],
+      "match_name": "conference on neural information processing systems spotlight"
+    },
+    {
+      "code": "BKCSA088",
+      "acronym": "DATE",
+      "name": "Design Automation and Test in Europe Conference",
+      "if": 2,
+      "type": "regular",
+      "match_acronyms": [
+        "date"
+      ],
+      "match_name": "design automation and test in europe conference"
+    },
+    {
+      "code": "BKCSA089",
+      "acronym": "Eurographics",
+      "name": "Eurographics",
+      "if": 2,
+      "type": "regular",
+      "match_acronyms": [
+        "eurographics"
+      ],
+      "match_name": "eurographics"
+    },
+    {
+      "code": "BKCSA090",
+      "acronym": "EACL",
+      "name": "European Association for Computational Linguistics",
+      "if": 2,
+      "type": "regular",
+      "match_acronyms": [
+        "eacl"
+      ],
+      "match_name": "european association for computational linguistics"
+    },
+    {
+      "code": "BKCSA091",
+      "acronym": "EuroSys",
+      "name": "European Conference on Computer Systems",
+      "if": 2,
+      "type": "regular",
+      "match_acronyms": [
+        "eurosys"
+      ],
+      "match_name": "european conference on computer systems"
+    },
+    {
+      "code": "BKCSA092",
+      "acronym": "ECCV",
+      "name": "European Conference on Computer Vision",
+      "if": 2,
+      "type": "regular",
+      "match_acronyms": [
+        "eccv"
+      ],
+      "match_name": "european conference on computer vision"
+    },
+    {
+      "code": "BKCSA093",
+      "acronym": "ECOOP",
+      "name": "European Conference on Object Oriented Programming",
+      "if": 2,
+      "type": "regular",
+      "match_acronyms": [
+        "ecoop"
+      ],
+      "match_name": "european conference on object oriented programming"
+    },
+    {
+      "code": "BKCSA094",
+      "acronym": "ESA",
+      "name": "European Symposium on Algorithms",
+      "if": 2,
+      "type": "regular",
+      "match_acronyms": [
+        "esa"
+      ],
+      "match_name": "european symposium on algorithms"
+    },
+    {
+      "code": "BKCSA095",
+      "acronym": "ESOP",
+      "name": "European Symposium on Programming",
+      "if": 2,
+      "type": "regular",
+      "match_acronyms": [
+        "esop"
+      ],
+      "match_name": "european symposium on programming"
+    },
+    {
+      "code": "BKCSA096",
+      "acronym": "ESORICS",
+      "name": "European Symposium on Research in Computer Security",
+      "if": 2,
+      "type": "regular",
+      "match_acronyms": [
+        "esorics"
+      ],
+      "match_name": "european symposium on research in computer security"
+    },
+    {
+      "code": "BKCSA097",
+      "acronym": "ICNP",
+      "name": "IEEE International Conference on Network Protocols",
+      "if": 2,
+      "type": "regular",
+      "match_acronyms": [
+        "icnp"
+      ],
+      "match_name": "ieee international conference on network protocols"
+    },
+    {
+      "code": "BKCSA098",
+      "acronym": "ICSME",
+      "name": "IEEE International Conference on Software Maintenance and Evolution",
+      "if": 2,
+      "type": "regular",
+      "match_acronyms": [
+        "icsme"
+      ],
+      "match_name": "ieee international conference on software maintenance and evolution"
+    },
+    {
+      "code": "BKCSA099",
+      "acronym": "ICWS",
+      "name": "IEEE International Conference on web Services",
+      "if": 2,
+      "type": "regular",
+      "match_acronyms": [
+        "icws"
+      ],
+      "match_name": "ieee international conference on web services"
+    },
+    {
+      "code": "BKCSA100",
+      "acronym": "IPDPS",
+      "name": "IEEE International Parallel and Distributed Processing Symposium",
+      "if": 2,
+      "type": "regular",
+      "match_acronyms": [
+        "ipdps"
+      ],
+      "match_name": "ieee international parallel and distributed processing symposium"
+    },
+    {
+      "code": "BKCSA101",
+      "acronym": "RE",
+      "name": "IEEE International Requirements Engineering Conference",
+      "if": 2,
+      "type": "regular",
+      "match_acronyms": [
+        "re"
+      ],
+      "match_name": "ieee international requirements engineering conference"
+    },
+    {
+      "code": "BKCSA102",
+      "acronym": "HPDC",
+      "name": "IEEE International Symposium on High Performance Distributed Computing",
+      "if": 2,
+      "type": "regular",
+      "match_acronyms": [
+        "hpdc"
+      ],
+      "match_name": "ieee international symposium on high performance distributed computing"
+    },
+    {
+      "code": "BKCSA103",
+      "acronym": "RTAS",
+      "name": "IEEE Real-Time and Embedded Technology and Applications Symposium",
+      "if": 2,
+      "type": "regular",
+      "match_acronyms": [
+        "rtas"
+      ],
+      "match_name": "ieee real time and embedded technology and applications symposium"
+    },
+    {
+      "code": "BKCSA104",
+      "acronym": "MASCOTS",
+      "name": "IEEE Symposium Model Analysis and Simulation of Computer and Telecommunications Systems",
+      "if": 2,
+      "type": "regular",
+      "match_acronyms": [
+        "mascots"
+      ],
+      "match_name": "ieee symposium model analysis and simulation of computer and telecommunications systems"
+    },
+    {
+      "code": "BKCSA105",
+      "acronym": "VR",
+      "name": "IEEE Virtual Reality Conference",
+      "if": 2,
+      "type": "regular",
+      "match_acronyms": [
+        "vr"
+      ],
+      "match_name": "ieee virtual reality conference"
+    },
+    {
+      "code": "BKCSA106",
+      "acronym": "DSN",
+      "name": "IEEE/IFIP International Conference on Dependable Systems and Networks",
+      "if": 2,
+      "type": "regular",
+      "match_acronyms": [
+        "dsn"
+      ],
+      "match_name": "ieee ifip international conference on dependable systems and networks"
+    },
+    {
+      "code": "BKCSA107",
+      "acronym": "PERFORMANCE",
+      "name": "IFIP WG 7.3 International Symposium on Computer Performance, Modeling, Measurements and Evaluation",
+      "if": 2,
+      "type": "regular",
+      "match_acronyms": [
+        "performance"
+      ],
+      "match_name": "ifip wg 7 3 international symposium on computer performance modeling measurements and evaluation"
+    },
+    {
+      "code": "BKCSA108",
+      "acronym": "ICALP",
+      "name": "International Colloquium on Automata, Languages and Programming",
+      "if": 2,
+      "type": "regular",
+      "match_acronyms": [
+        "icalp"
+      ],
+      "match_name": "international colloquium on automata languages and programming"
+    },
+    {
+      "code": "BKCSA109",
+      "acronym": "AAMAS",
+      "name": "International Conference on Autonomous Agents and Multi-agent Systems",
+      "if": 2,
+      "type": "regular",
+      "match_acronyms": [
+        "aamas"
+      ],
+      "match_name": "international conference on autonomous agents and multi agent systems"
+    },
+    {
+      "code": "BKCSA110",
+      "acronym": "CC",
+      "name": "International Conference on Compiler Construction",
+      "if": 2,
+      "type": "regular",
+      "match_acronyms": [
+        "cc"
+      ],
+      "match_name": "international conference on compiler construction"
+    },
+    {
+      "code": "BKCSA111",
+      "acronym": "CASES",
+      "name": "International Conference on Compilers, Architecture, and Synthesis for Embedded Systems",
+      "if": 2,
+      "type": "regular",
+      "match_acronyms": [
+        "cases"
+      ],
+      "match_name": "international conference on compilers architecture and synthesis for embedded systems"
+    },
+    {
+      "code": "BKCSA112",
+      "acronym": "COLING",
+      "name": "International Conference on Computational Linguistics",
+      "if": 2,
+      "type": "regular",
+      "match_acronyms": [
+        "coling"
+      ],
+      "match_name": "international conference on computational linguistics"
+    },
+    {
+      "code": "BKCSA113",
+      "acronym": "ICCV",
+      "name": "International Conference on Computer Vision (Spotlight)",
+      "if": 2,
+      "type": "spotlight",
+      "match_acronyms": [
+        "iccv"
+      ],
+      "match_name": "international conference on computer vision spotlight"
+    },
+    {
+      "code": "BKCSA114",
+      "acronym": "EDBT",
+      "name": "International Conference on Extending Database Technology",
+      "if": 2,
+      "type": "regular",
+      "match_acronyms": [
+        "edbt"
+      ],
+      "match_name": "international conference on extending database technology"
+    },
+    {
+      "code": "BKCSA115",
+      "acronym": "ICFP",
+      "name": "International Conference on Functional Programming",
+      "if": 2,
+      "type": "regular",
+      "match_acronyms": [
+        "icfp"
+      ],
+      "match_name": "international conference on functional programming"
+    },
+    {
+      "code": "BKCSA116",
+      "acronym": "CODES",
+      "name": "International Conference on Hardware/Software Codesign and System Synthesis",
+      "if": 2,
+      "type": "regular",
+      "match_acronyms": [
+        "codes"
+      ],
+      "match_name": "international conference on hardware software codesign and system synthesis"
+    },
+    {
+      "code": "BKCSA117",
+      "acronym": "ICPP",
+      "name": "International Conference on Parallel Processing",
+      "if": 2,
+      "type": "regular",
+      "match_acronyms": [
+        "icpp"
+      ],
+      "match_name": "international conference on parallel processing"
+    },
+    {
+      "code": "BKCSA118",
+      "acronym": "ASIACRYPT",
+      "name": "International Conference on the Theory and Application of Cryptology and Information Security",
+      "if": 2,
+      "type": "regular",
+      "match_acronyms": [
+        "asiacrypt"
+      ],
+      "match_name": "international conference on the theory and application of cryptology and information security"
+    },
+    {
+      "code": "BKCSA119",
+      "acronym": "TACAS",
+      "name": "International Conference on Tools and Algorithms for Construction and Analysis of Systems",
+      "if": 2,
+      "type": "regular",
+      "match_acronyms": [
+        "tacas"
+      ],
+      "match_name": "international conference on tools and algorithms for construction and analysis of systems"
+    },
+    {
+      "code": "BKCSA120",
+      "acronym": "ISWC",
+      "name": "International Semantic web Conference",
+      "if": 2,
+      "type": "regular",
+      "match_acronyms": [
+        "iswc"
+      ],
+      "match_name": "international semantic web conference"
+    },
+    {
+      "code": "BKCSA121",
+      "acronym": "CGO",
+      "name": "International Symposium on Code Generation and Optimization",
+      "if": 2,
+      "type": "regular",
+      "match_acronyms": [
+        "cgo"
+      ],
+      "match_name": "international symposium on code generation and optimization"
+    },
+    {
+      "code": "BKCSA122",
+      "acronym": "DISC",
+      "name": "International Symposium on Distributed Computing",
+      "if": 2,
+      "type": "regular",
+      "match_acronyms": [
+        "disc"
+      ],
+      "match_name": "international symposium on distributed computing"
+    },
+    {
+      "code": "BKCSA123",
+      "acronym": "RAID",
+      "name": "International Symposium on Recent Advances in Intrusion Detection",
+      "if": 2,
+      "type": "regular",
+      "match_acronyms": [
+        "raid"
+      ],
+      "match_name": "international symposium on recent advances in intrusion detection"
+    },
+    {
+      "code": "BKCSA124",
+      "acronym": "NDSS",
+      "name": "Network and Distributed System Security Symposium",
+      "if": 2,
+      "type": "regular",
+      "match_acronyms": [
+        "ndss"
+      ],
+      "match_name": "network and distributed system security symposium"
+    },
+    {
+      "code": "BKCSA125",
+      "acronym": "PG",
+      "name": "Pacific Conference on Computer Graphics and Applications",
+      "if": 2,
+      "type": "regular",
+      "match_acronyms": [
+        "pg"
+      ],
+      "match_name": "pacific conference on computer graphics and applications"
+    },
+    {
+      "code": "BKCSA126",
+      "acronym": "RSS",
+      "name": "Robotics: Science and Systems Conference",
+      "if": 2,
+      "type": "regular",
+      "match_acronyms": [
+        "rss"
+      ],
+      "match_name": "robotics science and systems conference"
+    },
+    {
+      "code": "BKCSA127",
+      "acronym": "SDM",
+      "name": "SIAM International Conference on Data Mining",
+      "if": 2,
+      "type": "regular",
+      "match_acronyms": [
+        "sdm"
+      ],
+      "match_name": "siam international conference on data mining"
+    },
+    {
+      "code": "BKCSA128",
+      "acronym": "RecSys",
+      "name": "ACM Conference on Recommender Systems",
+      "if": 1,
+      "type": "regular",
+      "match_acronyms": [
+        "recsys"
+      ],
+      "match_name": "acm conference on recommender systems"
+    },
+    {
+      "code": "BKCSA129",
+      "acronym": "ICMR",
+      "name": "ACM International Conference on Multimedia Retrieval (Former ACM International Conference on Image and Video Retrieval)",
+      "if": 1,
+      "type": "regular",
+      "match_acronyms": [
+        "icmr"
+      ],
+      "match_name": "acm international conference on multimedia retrieval former acm international conference on image and video retrieval"
+    },
+    {
+      "code": "BKCSA130",
+      "acronym": "NOSSDAV",
+      "name": "ACM Network and Operating System Support for Digital Audio and Video",
+      "if": 1,
+      "type": "regular",
+      "match_acronyms": [
+        "nossdav"
+      ],
+      "match_name": "acm network and operating system support for digital audio and video"
+    },
+    {
+      "code": "BKCSA131",
+      "acronym": "SAC",
+      "name": "ACM SIGAPP Symposium on Applied Computing",
+      "if": 1,
+      "type": "regular",
+      "match_acronyms": [
+        "sac"
+      ],
+      "match_name": "acm sigapp symposium on applied computing"
+    },
+    {
+      "code": "BKCSA132",
+      "acronym": "i3DG",
+      "name": "ACM SIGGRAPH Symposium on Interactive 3D Graphics and Games",
+      "if": 1,
+      "type": "regular",
+      "match_acronyms": [
+        "i3dg"
+      ],
+      "match_name": "acm siggraph symposium on interactive 3d graphics and games"
+    },
+    {
+      "code": "BKCSA133",
+      "acronym": "VEE",
+      "name": "ACM SIGPLAN/SIGOPS International Conference on Virtual Execution Environments",
+      "if": 1,
+      "type": "regular",
+      "match_acronyms": [
+        "vee"
+      ],
+      "match_name": "acm sigplan sigops international conference on virtual execution environments"
+    },
+    {
+      "code": "BKCSA134",
+      "acronym": "SOCC",
+      "name": "ACM Symposium on Cloud Computing",
+      "if": 1,
+      "type": "regular",
+      "match_acronyms": [
+        "socc"
+      ],
+      "match_name": "acm symposium on cloud computing"
+    },
+    {
+      "code": "BKCSA135",
+      "acronym": "ASIACCS",
+      "name": "ACM Symposium on Information, Computer and Communications Security",
+      "if": 1,
+      "type": "regular",
+      "match_acronyms": [
+        "asiaccs"
+      ],
+      "match_name": "acm symposium on information computer and communications security"
+    },
+    {
+      "code": "BKCSA136",
+      "acronym": "VRST",
+      "name": "ACM Symposium on Virtual Reality Software and Technology",
+      "if": 1,
+      "type": "regular",
+      "match_acronyms": [
+        "vrst"
+      ],
+      "match_name": "acm symposium on virtual reality software and technology"
+    },
+    {
+      "code": "BKCSA137",
+      "acronym": "ANCS",
+      "name": "ACM/IEEE Symposium on Architectures for Networking and Communications Systems",
+      "if": 1,
+      "type": "regular",
+      "match_acronyms": [
+        "ancs"
+      ],
+      "match_name": "acm ieee symposium on architectures for networking and communications systems"
+    },
+    {
+      "code": "BKCSA138",
+      "acronym": "ACCV",
+      "name": "Asian Conference on Computer Vision",
+      "if": 1,
+      "type": "regular",
+      "match_acronyms": [
+        "accv"
+      ],
+      "match_name": "asian conference on computer vision"
+    },
+    {
+      "code": "BKCSA139",
+      "acronym": "CSEET",
+      "name": "Conference on Software Engineering Education and Training",
+      "if": 1,
+      "type": "regular",
+      "match_acronyms": [
+        "cseet"
+      ],
+      "match_name": "conference on software engineering education and training"
+    },
+    {
+      "code": "BKCSA140",
+      "acronym": "SGP",
+      "name": "Eurographics symposium on Geometry Processing",
+      "if": 1,
+      "type": "regular",
+      "match_acronyms": [
+        "sgp"
+      ],
+      "match_name": "eurographics symposium on geometry processing"
+    },
+    {
+      "code": "BKCSA141",
+      "acronym": "ECRTS",
+      "name": "Euromicro Conference on Real-Time Systems",
+      "if": 1,
+      "type": "regular",
+      "match_acronyms": [
+        "ecrts"
+      ],
+      "match_name": "euromicro conference on real time systems"
+    },
+    {
+      "code": "BKCSA142",
+      "acronym": "ECAI",
+      "name": "European Conference on Artificial Intelligence",
+      "if": 1,
+      "type": "regular",
+      "match_acronyms": [
+        "ecai"
+      ],
+      "match_name": "european conference on artificial intelligence"
+    },
+    {
+      "code": "BKCSA143",
+      "acronym": "ECCV",
+      "name": "European Conference on Computer Vision (Spotlight)",
+      "if": 1,
+      "type": "spotlight",
+      "match_acronyms": [
+        "eccv"
+      ],
+      "match_name": "european conference on computer vision spotlight"
+    },
+    {
+      "code": "BKCSA144",
+      "acronym": "FC",
+      "name": "Financial Cryptography and Data Security",
+      "if": 1,
+      "type": "regular",
+      "match_acronyms": [
+        "fc"
+      ],
+      "match_name": "financial cryptography and data security"
+    },
+    {
+      "code": "BKCSA145",
+      "acronym": "GECCO",
+      "name": "Genetic and Evolutionary Computation Conference",
+      "if": 1,
+      "type": "regular",
+      "match_acronyms": [
+        "gecco"
+      ],
+      "match_name": "genetic and evolutionary computation conference"
+    },
+    {
+      "code": "BKCSA146",
+      "acronym": "CSF",
+      "name": "IEEE Computer Security Foundation Symposium",
+      "if": 1,
+      "type": "regular",
+      "match_acronyms": [
+        "csf"
+      ],
+      "match_name": "ieee computer security foundation symposium"
+    },
+    {
+      "code": "BKCSA147",
+      "acronym": "BIBM",
+      "name": "IEEE Conference on Bioinformatics and Biomedicine",
+      "if": 1,
+      "type": "regular",
+      "match_acronyms": [
+        "bibm"
+      ],
+      "match_name": "ieee conference on bioinformatics and biomedicine"
+    },
+    {
+      "code": "BKCSA148",
+      "acronym": "InfoVis",
+      "name": "IEEE Conference on Information Visualization",
+      "if": 1,
+      "type": "regular",
+      "match_acronyms": [
+        "infovis"
+      ],
+      "match_name": "ieee conference on information visualization"
+    },
+    {
+      "code": "BKCSA149",
+      "acronym": "AVSS",
+      "name": "IEEE International Conference on Advanced Video and Signal-Based Surveillance",
+      "if": 1,
+      "type": "regular",
+      "match_acronyms": [
+        "avss"
+      ],
+      "match_name": "ieee international conference on advanced video and signal based surveillance"
+    },
+    {
+      "code": "BKCSA150",
+      "acronym": "CLOUD",
+      "name": "IEEE International Conference on Cloud Computing",
+      "if": 1,
+      "type": "regular",
+      "match_acronyms": [
+        "cloud"
+      ],
+      "match_name": "ieee international conference on cloud computing"
+    },
+    {
+      "code": "BKCSA151",
+      "acronym": "CLUSTER",
+      "name": "IEEE International Conference on Cluster Computing",
+      "if": 1,
+      "type": "regular",
+      "match_acronyms": [
+        "cluster"
+      ],
+      "match_name": "ieee international conference on cluster computing"
+    },
+    {
+      "code": "BKCSA152",
+      "acronym": "ICCD",
+      "name": "IEEE International Conference on Computer Design",
+      "if": 1,
+      "type": "regular",
+      "match_acronyms": [
+        "iccd"
+      ],
+      "match_name": "ieee international conference on computer design"
+    },
+    {
+      "code": "BKCSA153",
+      "acronym": "HiPC",
+      "name": "IEEE International Conference on High Performance Computing, Data, and Analytics",
+      "if": 1,
+      "type": "regular",
+      "match_acronyms": [
+        "hipc"
+      ],
+      "match_name": "ieee international conference on high performance computing data and analytics"
+    },
+    {
+      "code": "BKCSA154",
+      "acronym": "MSST",
+      "name": "IEEE International Conference on Massive Storage Systems and Technology",
+      "if": 1,
+      "type": "regular",
+      "match_acronyms": [
+        "msst"
+      ],
+      "match_name": "ieee international conference on massive storage systems and technology"
+    },
+    {
+      "code": "BKCSA155",
+      "acronym": "MASS",
+      "name": "IEEE International Conference on Mobile Adhoc and Sensor Systems",
+      "if": 1,
+      "type": "regular",
+      "match_acronyms": [
+        "mass"
+      ],
+      "match_name": "ieee international conference on mobile adhoc and sensor systems"
+    },
+    {
+      "code": "BKCSA156",
+      "acronym": "ICPR",
+      "name": "IEEE International Conference on Pattern Recognition",
+      "if": 1,
+      "type": "regular",
+      "match_acronyms": [
+        "icpr"
+      ],
+      "match_name": "ieee international conference on pattern recognition"
+    },
+    {
+      "code": "BKCSA157",
+      "acronym": "ICRA",
+      "name": "IEEE International Conference on Robotics and Automation",
+      "if": 1,
+      "type": "regular",
+      "match_acronyms": [
+        "icra"
+      ],
+      "match_name": "ieee international conference on robotics and automation"
+    },
+    {
+      "code": "BKCSA158",
+      "acronym": "SECON",
+      "name": "IEEE International Conference on Sensing, Communication, and Networking",
+      "if": 1,
+      "type": "regular",
+      "match_acronyms": [
+        "secon"
+      ],
+      "match_name": "ieee international conference on sensing communication and networking"
+    },
+    {
+      "code": "BKCSA159",
+      "acronym": "ICST",
+      "name": "IEEE International Conference on Software Testing, Verification and Validation",
+      "if": 1,
+      "type": "regular",
+      "match_acronyms": [
+        "icst"
+      ],
+      "match_name": "ieee international conference on software testing verification and validation"
+    },
+    {
+      "code": "BKCSA160",
+      "acronym": "ISLPED",
+      "name": "IEEE International Symposium on Low-Power Electronics and Design",
+      "if": 1,
+      "type": "regular",
+      "match_acronyms": [
+        "islped"
+      ],
+      "match_name": "ieee international symposium on low power electronics and design"
+    },
+    {
+      "code": "BKCSA161",
+      "acronym": "ISMAR",
+      "name": "IEEE International Symposium on Mixed and Augmented Reality",
+      "if": 1,
+      "type": "regular",
+      "match_acronyms": [
+        "ismar"
+      ],
+      "match_name": "ieee international symposium on mixed and augmented reality"
+    },
+    {
+      "code": "BKCSA162",
+      "acronym": "ISPASS",
+      "name": "IEEE International Symposium on Performance Analysis of Systems and Software",
+      "if": 1,
+      "type": "regular",
+      "match_acronyms": [
+        "ispass"
+      ],
+      "match_name": "ieee international symposium on performance analysis of systems and software"
+    },
+    {
+      "code": "BKCSA163",
+      "acronym": "ISSRE",
+      "name": "IEEE International Symposium on Software Reliability Engineering",
+      "if": 1,
+      "type": "regular",
+      "match_acronyms": [
+        "issre"
+      ],
+      "match_name": "ieee international symposium on software reliability engineering"
+    },
+    {
+      "code": "BKCSA164",
+      "acronym": "IISWC",
+      "name": "IEEE International Symposium on Workload Characterization",
+      "if": 1,
+      "type": "regular",
+      "match_acronyms": [
+        "iiswc"
+      ],
+      "match_name": "ieee international symposium on workload characterization"
+    },
+    {
+      "code": "BKCSA165",
+      "acronym": "SRDS",
+      "name": "IEEE Symposium on Reliable Distributed Systems",
+      "if": 1,
+      "type": "regular",
+      "match_acronyms": [
+        "srds"
+      ],
+      "match_name": "ieee symposium on reliable distributed systems"
+    },
+    {
+      "code": "BKCSA166",
+      "acronym": "CCGrid",
+      "name": "IEEE/ACM International Symposium on Cluster, Cloud, and Grid Computing",
+      "if": 1,
+      "type": "regular",
+      "match_acronyms": [
+        "ccgrid"
+      ],
+      "match_name": "ieee acm international symposium on cluster cloud and grid computing"
+    },
+    {
+      "code": "BKCSA167",
+      "acronym": "NOMS",
+      "name": "IEEE/IFIP Network Operations and Management Symposium",
+      "if": 1,
+      "type": "regular",
+      "match_acronyms": [
+        "noms"
+      ],
+      "match_name": "ieee ifip network operations and management symposium"
+    },
+    {
+      "code": "BKCSA168",
+      "acronym": "SEC",
+      "name": "IFIP International Information Security and Privacy Conference",
+      "if": 1,
+      "type": "regular",
+      "match_acronyms": [
+        "sec"
+      ],
+      "match_name": "ifip international information security and privacy conference"
+    },
+    {
+      "code": "BKCSA169",
+      "acronym": "ISMB",
+      "name": "Intelligent Systems for Molecular Biology",
+      "if": 1,
+      "type": "regular",
+      "match_acronyms": [
+        "ismb"
+      ],
+      "match_name": "intelligent systems for molecular biology"
+    },
+    {
+      "code": "BKCSA170",
+      "acronym": "FASE",
+      "name": "International Conf. on Fundamental Approaches to Software Engineering",
+      "if": 1,
+      "type": "regular",
+      "match_acronyms": [
+        "fase"
+      ],
+      "match_name": "international conf on fundamental approaches to software engineering"
+    },
+    {
+      "code": "BKCSA171",
+      "acronym": "ICSOC",
+      "name": "International Conf. on Service Oriented Computing",
+      "if": 1,
+      "type": "regular",
+      "match_acronyms": [
+        "icsoc"
+      ],
+      "match_name": "international conf on service oriented computing"
+    },
+    {
+      "code": "BKCSA172",
+      "acronym": "AISTATS",
+      "name": "International Conference on Artificial Intelligence and Statistics",
+      "if": 1,
+      "type": "regular",
+      "match_acronyms": [
+        "aistats"
+      ],
+      "match_name": "international conference on artificial intelligence and statistics"
+    },
+    {
+      "code": "BKCSA173",
+      "acronym": "ICAPS",
+      "name": "International Conference on Automated Planning and Scheduling",
+      "if": 1,
+      "type": "regular",
+      "match_acronyms": [
+        "icaps"
+      ],
+      "match_name": "international conference on automated planning and scheduling"
+    },
+    {
+      "code": "BKCSA174",
+      "acronym": "CONCUR",
+      "name": "International Conference on Concurrency Theory",
+      "if": 1,
+      "type": "regular",
+      "match_acronyms": [
+        "concur"
+      ],
+      "match_name": "international conference on concurrency theory"
+    },
+    {
+      "code": "BKCSA175",
+      "acronym": "DASFAA",
+      "name": "International Conference on Database Systems for Advanced Applications",
+      "if": 1,
+      "type": "regular",
+      "match_acronyms": [
+        "dasfaa"
+      ],
+      "match_name": "international conference on database systems for advanced applications"
+    },
+    {
+      "code": "BKCSA176",
+      "acronym": "HiPEAC",
+      "name": "International Conference on High Performance and Embedded Architectures and Compilers",
+      "if": 1,
+      "type": "regular",
+      "match_acronyms": [
+        "hipeac"
+      ],
+      "match_name": "international conference on high performance and embedded architectures and compilers"
+    },
+    {
+      "code": "BKCSA177",
+      "acronym": "ITS",
+      "name": "International Conference on Intelligent Tutoring Systems",
+      "if": 1,
+      "type": "regular",
+      "match_acronyms": [
+        "its"
+      ],
+      "match_name": "international conference on intelligent tutoring systems"
+    },
+    {
+      "code": "BKCSA178",
+      "acronym": "ICLP",
+      "name": "International Conference on Logic Programming",
+      "if": 1,
+      "type": "regular",
+      "match_acronyms": [
+        "iclp"
+      ],
+      "match_name": "international conference on logic programming"
+    },
+    {
+      "code": "BKCSA179",
+      "acronym": "MICCAI",
+      "name": "International Conference on Medical Image Computing and Computer Assisted Interventions",
+      "if": 1,
+      "type": "regular",
+      "match_acronyms": [
+        "miccai"
+      ],
+      "match_name": "international conference on medical image computing and computer assisted interventions"
+    },
+    {
+      "code": "BKCSA180",
+      "acronym": "Europar",
+      "name": "International European Conference on Parallel and Distributed Computing",
+      "if": 1,
+      "type": "regular",
+      "match_acronyms": [
+        "europar"
+      ],
+      "match_name": "international european conference on parallel and distributed computing"
+    },
+    {
+      "code": "BKCSA181",
+      "acronym": "IJCAR",
+      "name": "International Joint Conference on Automated Reasoning",
+      "if": 1,
+      "type": "regular",
+      "match_acronyms": [
+        "ijcar"
+      ],
+      "match_name": "international joint conference on automated reasoning"
+    },
+    {
+      "code": "BKCSA182",
+      "acronym": "SAS",
+      "name": "International Static Analysis Symposium",
+      "if": 1,
+      "type": "regular",
+      "match_acronyms": [
+        "sas"
+      ],
+      "match_name": "international static analysis symposium"
+    },
+    {
+      "code": "BKCSA183",
+      "acronym": "ISAAC",
+      "name": "International Symposium on Algorithms and Computation",
+      "if": 1,
+      "type": "regular",
+      "match_acronyms": [
+        "isaac"
+      ],
+      "match_name": "international symposium on algorithms and computation"
+    },
+    {
+      "code": "BKCSA184",
+      "acronym": "STACS",
+      "name": "International Symposium on Theoretical Aspects of Computer Science",
+      "if": 1,
+      "type": "regular",
+      "match_acronyms": [
+        "stacs"
+      ],
+      "match_name": "international symposium on theoretical aspects of computer science"
+    },
+    {
+      "code": "BKCSA185",
+      "acronym": "PAKDD",
+      "name": "Pacific-Asia Conference on Knowledge Discovery and Data Mining",
+      "if": 1,
+      "type": "regular",
+      "match_acronyms": [
+        "pakdd"
+      ],
+      "match_name": "pacific asia conference on knowledge discovery and data mining"
+    },
+    {
+      "code": "BKCSA186",
+      "acronym": "RECOMB",
+      "name": "Research in Computational Molecular Biology",
+      "if": 1,
+      "type": "regular",
+      "match_acronyms": [
+        "recomb"
+      ],
+      "match_name": "research in computational molecular biology"
+    },
+    {
+      "code": "BKCSA187",
+      "acronym": "SOUPS",
+      "name": "Symposium On Usable Privacy and Security",
+      "if": 1,
+      "type": "regular",
+      "match_acronyms": [
+        "soups"
+      ],
+      "match_name": "symposium on usable privacy and security"
+    },
+    {
+      "code": "BKCSA188",
+      "acronym": "TCC",
+      "name": "Theory of Cryptography Conference",
+      "if": 1,
+      "type": "regular",
+      "match_acronyms": [
+        "tcc"
+      ],
+      "match_name": "theory of cryptography conference"
+    }
+  ]
+}

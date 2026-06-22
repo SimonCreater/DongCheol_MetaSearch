@@ -1,0 +1,189 @@
+{
+  "meta": {
+    "source": "OpenAlex /sources summary_stats.2yr_mean_citedness",
+    "metric": "2yr_mean_citedness (Journal-Impact-Factor-equivalent)",
+    "count": 20
+  },
+  "journals": {
+    "ieee transactions on pattern analysis and machine intelligence": {
+      "display_name": "IEEE Transactions on Pattern Analysis and Machine Intelligence",
+      "openalex_id": "https://openalex.org/S199944782",
+      "type": "journal",
+      "citedness": 11.95851013672796,
+      "h_index": 550,
+      "i10_index": 7995,
+      "issn_l": "0162-8828"
+    },
+    "journal of machine learning research": {
+      "display_name": "Journal of Machine Learning Research",
+      "openalex_id": "https://openalex.org/S118988714",
+      "type": "journal",
+      "citedness": 0.0,
+      "h_index": 132,
+      "i10_index": 652,
+      "issn_l": "1532-4435"
+    },
+    "international journal of computer vision": {
+      "display_name": "International Journal of Computer Vision",
+      "openalex_id": "https://openalex.org/S25538012",
+      "type": "journal",
+      "citedness": 8.26388888888889,
+      "h_index": 289,
+      "i10_index": 2559,
+      "issn_l": "0920-5691"
+    },
+    "ieee transactions on neural networks and learning systems": {
+      "display_name": "IEEE Transactions on Neural Networks and Learning Systems",
+      "openalex_id": "https://openalex.org/S4210175523",
+      "type": "journal",
+      "citedness": 7.527850078084331,
+      "h_index": 240,
+      "i10_index": 5682,
+      "issn_l": "2162-237X"
+    },
+    "ieee transactions on image processing": {
+      "display_name": "IEEE Transactions on Image Processing",
+      "openalex_id": "https://openalex.org/S4210173141",
+      "type": "journal",
+      "citedness": 7.603504218040234,
+      "h_index": 393,
+      "i10_index": 8829,
+      "issn_l": "1057-7149"
+    },
+    "artificial intelligence": {
+      "display_name": "Artificial Intelligence",
+      "openalex_id": "https://openalex.org/S196139623",
+      "type": "journal",
+      "citedness": 3.117056856187291,
+      "h_index": 299,
+      "i10_index": 2733,
+      "issn_l": "0004-3702"
+    },
+    "journal of artificial intelligence research": {
+      "display_name": "Journal of Artificial Intelligence Research",
+      "openalex_id": "https://openalex.org/S139930977",
+      "type": "journal",
+      "citedness": 4.0,
+      "h_index": 154,
+      "i10_index": 1115,
+      "issn_l": "1076-9757"
+    },
+    "nature machine intelligence": {
+      "display_name": "Nature Machine Intelligence",
+      "openalex_id": "https://openalex.org/S2912241403",
+      "type": "journal",
+      "citedness": 19.772916666666667,
+      "h_index": 145,
+      "i10_index": 758,
+      "issn_l": "2522-5839"
+    },
+    "pattern recognition": {
+      "display_name": "Pattern Recognition",
+      "openalex_id": "https://openalex.org/S414566",
+      "type": "journal",
+      "citedness": 5.784139784946237,
+      "h_index": 301,
+      "i10_index": 9659,
+      "issn_l": "0031-3203"
+    },
+    "neural networks": {
+      "display_name": "Neural Networks",
+      "openalex_id": "https://openalex.org/S123019304",
+      "type": "journal",
+      "citedness": 5.008567511994517,
+      "h_index": 247,
+      "i10_index": 5007,
+      "issn_l": "0893-6080"
+    },
+    "machine learning": {
+      "display_name": "Machine Learning",
+      "openalex_id": "https://openalex.org/S62148650",
+      "type": "journal",
+      "citedness": 3.0527817403708988,
+      "h_index": 261,
+      "i10_index": 1893,
+      "issn_l": "0885-6125"
+    },
+    "transactions on machine learning research": {
+      "display_name": "Transactions on machine learning research",
+      "openalex_id": "https://openalex.org/S4393919742",
+      "type": "journal",
+      "citedness": 0.0,
+      "h_index": 0,
+      "i10_index": 0,
+      "issn_l": "2835-8856"
+    },
+    "transactions of the association for computational linguistics": {
+      "display_name": "Transactions of the Association for Computational Linguistics",
+      "openalex_id": "https://openalex.org/S2729999759",
+      "type": "journal",
+      "citedness": 12.147186147186147,
+      "h_index": 104,
+      "i10_index": 471,
+      "issn_l": "2307-387X"
+    },
+    "acm computing surveys": {
+      "display_name": "ACM Computing Surveys",
+      "openalex_id": "https://openalex.org/S157921468",
+      "type": "journal",
+      "citedness": 19.58879618593564,
+      "h_index": 324,
+      "i10_index": 2622,
+      "issn_l": "0360-0300"
+    },
+    "ieee transactions on knowledge and data engineering": {
+      "display_name": "IEEE Transactions on Knowledge and Data Engineering",
+      "openalex_id": "https://openalex.org/S30698027",
+      "type": "journal",
+      "citedness": 8.342769701606732,
+      "h_index": 266,
+      "i10_index": 4959,
+      "issn_l": "1041-4347"
+    },
+    "neurocomputing": {
+      "display_name": "Neurocomputing",
+      "openalex_id": "https://openalex.org/S45693802",
+      "type": "journal",
+      "citedness": 4.494184114323696,
+      "h_index": 256,
+      "i10_index": 14496,
+      "issn_l": "0925-2312"
+    },
+    "expert systems with applications": {
+      "display_name": "Expert Systems with Applications",
+      "openalex_id": "https://openalex.org/S13144211",
+      "type": "journal",
+      "citedness": 6.572956782199401,
+      "h_index": 345,
+      "i10_index": 19116,
+      "issn_l": "0957-4174"
+    },
+    "information fusion": {
+      "display_name": "Information Fusion",
+      "openalex_id": "https://openalex.org/S7560371",
+      "type": "journal",
+      "citedness": 10.504695996045477,
+      "h_index": 213,
+      "i10_index": 2351,
+      "issn_l": "1566-2535"
+    },
+    "knowledge based systems": {
+      "display_name": "Knowledge-Based Systems",
+      "openalex_id": "https://openalex.org/S10169007",
+      "type": "journal",
+      "citedness": 5.6696074106749,
+      "h_index": 218,
+      "i10_index": 7211,
+      "issn_l": "0950-7051"
+    },
+    "ieee transactions on robotics": {
+      "display_name": "IEEE Transactions on Robotics",
+      "openalex_id": "https://openalex.org/S144620930",
+      "type": "journal",
+      "citedness": 7.543055555555555,
+      "h_index": 226,
+      "i10_index": 2670,
+      "issn_l": "1552-3098"
+    }
+  }
+}

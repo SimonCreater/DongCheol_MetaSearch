@@ -1,0 +1,326 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>retrieval-augmented-generation_2026-06-22 · scholar-megasearch artifact</title>
+  <style>
+    :root { color-scheme: dark; --bg:#0b0d12; --panel:#121723; --panel2:#171e2b; --text:#ecf2ff; --muted:#9aa8bd; --line:#263246; --accent:#89b4ff; --ok:#72d391; --warn:#ffd166; --bad:#ff7b7b; }
+    * { box-sizing: border-box; }
+    body { margin:0; font: 15px/1.55 ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; background: radial-gradient(circle at top left, #172033, var(--bg) 34rem); color:var(--text); }
+    a { color:var(--accent); text-decoration:none; }
+    a:hover { text-decoration:underline; }
+    header { padding: 42px clamp(20px, 5vw, 72px) 24px; border-bottom:1px solid var(--line); }
+    .eyebrow { color:var(--accent); text-transform:uppercase; letter-spacing:.14em; font-size:12px; font-weight:700; }
+    h1 { margin:.25rem 0 .5rem; font-size: clamp(30px, 5vw, 56px); line-height:1.02; }
+    .sub { max-width: 920px; color:var(--muted); font-size:17px; }
+    main { padding: 24px clamp(20px, 5vw, 72px) 64px; }
+    .stats { display:grid; grid-template-columns: repeat(auto-fit, minmax(150px,1fr)); gap:12px; margin: 20px 0 22px; }
+    .stat { background:rgba(18,23,35,.86); border:1px solid var(--line); border-radius:16px; padding:16px; }
+    .stat strong { display:block; font-size:26px; }
+    .stat span { color:var(--muted); }
+    .summary { white-space:pre-wrap; background:rgba(18,23,35,.75); border:1px solid var(--line); border-radius:18px; padding:18px; color:#d8e3f7; max-height:320px; overflow:auto; }
+    .summary-head { display:flex; align-items:center; gap:14px; flex-wrap:wrap; }
+    .lang-toggle { display:inline-flex; gap:6px; }
+    .lang-toggle button { cursor:pointer; border:1px solid var(--line); background:var(--panel); color:var(--muted); border-radius:999px; padding:5px 12px; font-size:13px; }
+    .lang-toggle button.active { background:var(--accent); color:#07111d; border-color:var(--accent); font-weight:700; }
+    .lang-label { display:block; margin:-4px 0 8px; color:var(--accent); text-transform:uppercase; letter-spacing:.08em; font-size:11px; font-weight:700; }
+    .summary-wrap { display:grid; gap:12px; grid-template-columns: 1fr 1fr; }
+    .summary-wrap[data-show="ko"] { grid-template-columns: 1fr; }
+    .summary-wrap[data-show="en"] { grid-template-columns: 1fr; }
+    .summary-wrap[data-show="ko"] .summary-pane[data-lang="en"] { display:none; }
+    .summary-wrap[data-show="en"] .summary-pane[data-lang="ko"] { display:none; }
+    @media (max-width: 780px) { .summary-wrap { grid-template-columns: 1fr; } }
+    .controls { position:sticky; top:0; z-index:2; display:grid; grid-template-columns: 2fr repeat(3, minmax(150px, .7fr)); gap:10px; padding:14px 0; backdrop-filter: blur(12px); background:linear-gradient(rgba(11,13,18,.92), rgba(11,13,18,.72)); }
+    input, select { width:100%; border:1px solid var(--line); border-radius:12px; background:var(--panel); color:var(--text); padding:12px 13px; }
+    .result-count { color:var(--muted); margin: 6px 0 16px; }
+    .paper-list { display:grid; gap:14px; }
+    .paper-card { background:linear-gradient(180deg, rgba(23,30,43,.95), rgba(18,23,35,.94)); border:1px solid var(--line); border-radius:20px; padding:18px; box-shadow: 0 18px 60px rgba(0,0,0,.20); }
+    .paper-head { display:flex; gap:14px; align-items:flex-start; }
+    .rank { flex:0 0 auto; color:#07111d; background:var(--accent); font-weight:800; border-radius:12px; padding:8px 10px; }
+    .paper-main { flex:1; min-width:0; }
+    .paper-main h2 { margin:0; font-size:20px; line-height:1.25; }
+    .meta, .muted { color:var(--muted); }
+    .score { flex:0 0 auto; color:var(--muted); text-align:right; }
+    .metrics, .chips, .links, .queries, .layers { display:flex; flex-wrap:wrap; gap:8px; margin-top:10px; }
+    .metrics span, .chip, .layers span { border:1px solid var(--line); background:rgba(255,255,255,.035); border-radius:999px; padding:4px 9px; color:#dce7fa; }
+    .chip.source { border-color:#38598a; }
+    .chip.query { color:var(--muted); }
+    .pdf-status.ok { color:var(--ok); border-color:rgba(114,211,145,.55); }
+    .pdf-status.needs_mcp { color:var(--warn); border-color:rgba(255,209,102,.55); }
+    .pdf-status.missing { color:var(--bad); border-color:rgba(255,123,123,.45); }
+    .abstract { color:#ccd8ec; }
+    details { margin-top:10px; color:#dce7fa; }
+    summary { cursor:pointer; color:var(--accent); }
+    .links a { display:inline-flex; border:1px solid #3b5278; border-radius:10px; padding:6px 9px; background:rgba(137,180,255,.08); }
+    @media (max-width: 780px) { .controls { grid-template-columns:1fr; position:static; } .paper-head { flex-direction:column; } .score { text-align:left; } }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="eyebrow">scholar-megasearch artifact</div>
+    <h1>retrieval-augmented-generation_2026-06-22</h1>
+    <p class="sub">Interactive offline report generated from <code>corpus.json</code>, <code>summary.md</code>, and <code>pdfs/manifest.json</code>. Existing Markdown/JSON outputs remain unchanged.</p>
+    <section class="stats" aria-label="Run summary">
+      <div class="stat"><strong>5</strong><span>unique papers</span></div>
+      <div class="stat"><strong>3</strong><span>sources</span></div>
+      <div class="stat"><strong>2020–2024</strong><span>year range</span></div>
+      <div class="stat"><strong>3</strong><span>PDFs acquired</span></div>
+      <div class="stat"><strong>2</strong><span>need MCP fallback</span></div>
+    </section>
+  </header>
+  <main>
+    <section aria-label="Summary">
+      <div class="summary-head"><h2>Summary</h2>
+      <div class="lang-toggle" role="group" aria-label="Summary language">
+        <button type="button" data-show="both" class="active">둘 다 / Both</button>
+        <button type="button" data-show="ko">한국어</button>
+        <button type="button" data-show="en">English</button>
+      </div>
+      </div>
+      <div class="summary-wrap" id="summaryWrap" data-show="both">
+        <div class="summary summary-pane" data-lang="ko"><div class="lang-label">한국어 · summary.ko.md</div># 검색 요약 — 검색증강생성(RAG)
+
+**주제:** 대규모 언어모델을 위한 검색증강생성(RAG)
+**목표:** impact (임팩트팩터 우선)  ·  **깊이:** L3  ·  **날짜:** 2026-06-22
+
+## 검색 범위
+arXiv, Semantic Scholar(Asta), OpenAlex 전반으로 팬아웃. 중복 제거(DOI → arXiv-id →
+정규화 제목) 후 고유 논문 5편. 6단계 스코어러에 **venue-impact(IF) 레이어**를 켜서
+NeurIPS·EMNLP·ICLR·ACL 같은 고임팩트 학회 논문이 프리프린트 서베이보다 위로 올라옴.
+
+## 핵심 결과
+Lewis 외(NeurIPS 2020)가 여전히 RAG의 대표 논문 — 세 개의 독립 소스 모두에서 1위,
+venue-impact 점수도 최고.
+
+## 실패한 소스
+없음. 이 깊이에서는 arXiv 레이트리밋이 걸리지 않음.</div>
+        <div class="summary summary-pane" data-lang="en"><div class="lang-label">English · summary.md</div># Retrieval-Augmented Generation — search summary
+
+**Topic:** retrieval-augmented generation for large language models
+**Goal:** impact (venue-IF-first)  ·  **Depth:** L3  ·  **Date:** 2026-06-22
+
+## What was searched
+Fanned out across arXiv, Semantic Scholar (Asta), and OpenAlex. 5 unique papers
+after dedup (DOI → arXiv-id → normalized title). Ranking used the six-layer scorer
+with the venue-impact (IF) layer enabled, so high-impact venues (NeurIPS, EMNLP,
+ICLR, ACL) float to the top over preprint-only survey hits.
+
+## Top finding
+Lewis et al. (NeurIPS 2020) remains the seminal RAG reference — top across all three
+independent sources and the highest venue-impact score.
+
+## Sources that failed
+None. arXiv did not rate-limit at this depth.</div>
+      </div>
+    </section>
+    <section class="controls" aria-label="Filters">
+      <input id="searchInput" type="search" placeholder="Search papers, authors, abstracts, sources, queries" aria-label="Search papers">
+      <select id="sourceFilter" aria-label="Filter by source"><option value="">All sources</option><option value="arxiv">arxiv</option>
+<option value="openalex">openalex</option>
+<option value="semanticscholar">semanticscholar</option></select>
+      <select id="pdfFilter" aria-label="Filter by PDF status"><option value="">All PDF states</option><option value="ok">PDF downloaded</option><option value="needs_mcp">needs_mcp</option><option value="missing">Missing PDF</option></select>
+      <select id="sortSelect" aria-label="Sort papers"><option value="rank">Rank</option><option value="score">Score</option><option value="citations">Citations</option><option value="year">Year</option><option value="sources">Source count</option></select>
+    </section>
+    <div class="result-count" id="resultCount"></div>
+    <section class="paper-list" id="paperList" aria-label="Ranked papers">
+      
+    <article class="paper-card" id="paper-1"
+      data-rank="1" data-year="2020" data-citations="6231"
+      data-score="0.961000" data-sources-count="3"
+      data-sources="arxiv semanticscholar openalex" data-pdf-status="ok"
+      data-search="retrieval-augmented generation for knowledge-intensive nlp tasks patrick lewis, ethan perez, aleksandra piktus, fabio petroni we introduce rag models that combine a pre-trained parametric memory (seq2seq) with a non-parametric memory (a dense vector index of wikipedia) accessed with a neural retriever, setting state of the art on several knowledge-intensive tasks. arxiv semanticscholar openalex retrieval augmented generation rag knowledge intensive">
+      <div class="paper-head">
+        <div class="rank">#01</div>
+        <div class="paper-main">
+          <h2>Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks</h2>
+          <p class="meta">Patrick Lewis, Ethan Perez, Aleksandra Piktus, Fabio Petroni · 2020 · NeurIPS</p>
+        </div>
+        <div class="score">score <strong>0.961</strong></div>
+      </div>
+      <div class="metrics">
+        <span>6231 citations</span>
+        <span>3 sources</span>
+        <span class="pdf-status ok">PDF downloaded</span>
+      </div>
+      <div class="chips"><span class="chip source">arxiv</span><span class="chip source">semanticscholar</span><span class="chip source">openalex</span></div>
+      <p class="abstract">We introduce RAG models that combine a pre-trained parametric memory (seq2seq) with a non-parametric memory (a dense vector index of Wikipedia) accessed with a neural retriever, setting state of the art on several knowledge-intensive tasks.</p>
+      <details>
+        <summary>Provenance, queries, and rank layers</summary>
+        <div class="queries"><span class="chip query">retrieval augmented generation</span><span class="chip query">RAG knowledge intensive</span></div>
+        <div class="layers"><span><strong>access</strong> 1.000</span><span><strong>impact</strong> 0.980</span><span><strong>provenance</strong> 1.000</span><span><strong>recency</strong> 0.620</span><span><strong>relevance</strong> 0.970</span><span><strong>venue_impact</strong> 0.950</span></div>
+      </details>
+      <div class="links"><a href="https://doi.org/10.5555/3495724.3496517" target="_blank" rel="noreferrer">DOI</a> <a href="https://arxiv.org/abs/2005.11401" target="_blank" rel="noreferrer">arXiv</a> <a href="https://arxiv.org/pdf/2005.11401" target="_blank" rel="noreferrer">PDF URL</a> <a href="https://arxiv.org/abs/2005.11401" target="_blank" rel="noreferrer">Source</a> <a href="../pdfs/01_rag-lewis.pdf">Local PDF</a></div>
+    </article>
+    
+
+    <article class="paper-card" id="paper-2"
+      data-rank="2" data-year="2020" data-citations="4120"
+      data-score="0.918000" data-sources-count="2"
+      data-sources="arxiv semanticscholar" data-pdf-status="ok"
+      data-search="dense passage retrieval for open-domain question answering vladimir karpukhin, barlas oguz, sewon min, danqi chen we show that retrieval can be practically implemented using dense representations alone, where embeddings are learned from a small number of questions and passages by a dual-encoder framework. arxiv semanticscholar dense passage retrieval dpr open domain qa">
+      <div class="paper-head">
+        <div class="rank">#02</div>
+        <div class="paper-main">
+          <h2>Dense Passage Retrieval for Open-Domain Question Answering</h2>
+          <p class="meta">Vladimir Karpukhin, Barlas Oguz, Sewon Min, Danqi Chen · 2020 · EMNLP</p>
+        </div>
+        <div class="score">score <strong>0.918</strong></div>
+      </div>
+      <div class="metrics">
+        <span>4120 citations</span>
+        <span>2 sources</span>
+        <span class="pdf-status ok">PDF downloaded</span>
+      </div>
+      <div class="chips"><span class="chip source">arxiv</span><span class="chip source">semanticscholar</span></div>
+      <p class="abstract">We show that retrieval can be practically implemented using dense representations alone, where embeddings are learned from a small number of questions and passages by a dual-encoder framework.</p>
+      <details>
+        <summary>Provenance, queries, and rank layers</summary>
+        <div class="queries"><span class="chip query">dense passage retrieval</span><span class="chip query">DPR open domain QA</span></div>
+        <div class="layers"><span><strong>access</strong> 1.000</span><span><strong>impact</strong> 0.910</span><span><strong>provenance</strong> 0.850</span><span><strong>recency</strong> 0.620</span><span><strong>relevance</strong> 0.930</span><span><strong>venue_impact</strong> 0.900</span></div>
+      </details>
+      <div class="links"><a href="https://doi.org/10.18653/v1/2020.emnlp-main.550" target="_blank" rel="noreferrer">DOI</a> <a href="https://arxiv.org/abs/2004.04906" target="_blank" rel="noreferrer">arXiv</a> <a href="https://arxiv.org/pdf/2004.04906" target="_blank" rel="noreferrer">PDF URL</a> <a href="https://arxiv.org/abs/2004.04906" target="_blank" rel="noreferrer">Source</a> <a href="../pdfs/02_dpr.pdf">Local PDF</a></div>
+    </article>
+    
+
+    <article class="paper-card" id="paper-3"
+      data-rank="3" data-year="2024" data-citations="612"
+      data-score="0.889000" data-sources-count="2"
+      data-sources="arxiv openalex" data-pdf-status="needs_mcp"
+      data-search="self-rag: learning to retrieve, generate, and critique through self-reflection akari asai, zeqiu wu, yizhong wang, hannaneh hajishirzi self-rag enhances an llm&#x27;s quality and factuality through retrieval and self-reflection, training a single model to adaptively retrieve passages on-demand and reflect using special reflection tokens. arxiv openalex self-rag self reflection retrieval">
+      <div class="paper-head">
+        <div class="rank">#03</div>
+        <div class="paper-main">
+          <h2>Self-RAG: Learning to Retrieve, Generate, and Critique through Self-Reflection</h2>
+          <p class="meta">Akari Asai, Zeqiu Wu, Yizhong Wang, Hannaneh Hajishirzi · 2024 · ICLR</p>
+        </div>
+        <div class="score">score <strong>0.889</strong></div>
+      </div>
+      <div class="metrics">
+        <span>612 citations</span>
+        <span>2 sources</span>
+        <span class="pdf-status needs_mcp">needs_mcp</span>
+      </div>
+      <div class="chips"><span class="chip source">arxiv</span><span class="chip source">openalex</span></div>
+      <p class="abstract">Self-RAG enhances an LLM&#x27;s quality and factuality through retrieval and self-reflection, training a single model to adaptively retrieve passages on-demand and reflect using special reflection tokens.</p>
+      <details>
+        <summary>Provenance, queries, and rank layers</summary>
+        <div class="queries"><span class="chip query">self-rag self reflection retrieval</span></div>
+        <div class="layers"><span><strong>access</strong> 0.800</span><span><strong>impact</strong> 0.550</span><span><strong>provenance</strong> 0.850</span><span><strong>recency</strong> 0.960</span><span><strong>relevance</strong> 0.940</span><span><strong>venue_impact</strong> 0.920</span></div>
+      </details>
+      <div class="links"><a href="https://arxiv.org/abs/2310.11511" target="_blank" rel="noreferrer">arXiv</a> <a href="https://arxiv.org/pdf/2310.11511" target="_blank" rel="noreferrer">PDF URL</a> <a href="https://arxiv.org/abs/2310.11511" target="_blank" rel="noreferrer">Source</a></div>
+    </article>
+    
+
+    <article class="paper-card" id="paper-4"
+      data-rank="4" data-year="2023" data-citations="498"
+      data-score="0.842000" data-sources-count="1"
+      data-sources="semanticscholar" data-pdf-status="needs_mcp"
+      data-search="precise zero-shot dense retrieval without relevance labels (hyde) luyu gao, xueguang ma, jimmy lin, jamie callan hyde generates a hypothetical document by zero-shot instruction, then encodes it into an embedding vector used to retrieve real documents, removing the need for relevance labels. semanticscholar hypothetical document embeddings zero shot retrieval">
+      <div class="paper-head">
+        <div class="rank">#04</div>
+        <div class="paper-main">
+          <h2>Precise Zero-Shot Dense Retrieval without Relevance Labels (HyDE)</h2>
+          <p class="meta">Luyu Gao, Xueguang Ma, Jimmy Lin, Jamie Callan · 2023 · ACL</p>
+        </div>
+        <div class="score">score <strong>0.842</strong></div>
+      </div>
+      <div class="metrics">
+        <span>498 citations</span>
+        <span>1 sources</span>
+        <span class="pdf-status needs_mcp">needs_mcp</span>
+      </div>
+      <div class="chips"><span class="chip source">semanticscholar</span></div>
+      <p class="abstract">HyDE generates a hypothetical document by zero-shot instruction, then encodes it into an embedding vector used to retrieve real documents, removing the need for relevance labels.</p>
+      <details>
+        <summary>Provenance, queries, and rank layers</summary>
+        <div class="queries"><span class="chip query">hypothetical document embeddings zero shot retrieval</span></div>
+        <div class="layers"><span><strong>access</strong> 0.800</span><span><strong>impact</strong> 0.500</span><span><strong>provenance</strong> 0.500</span><span><strong>recency</strong> 0.880</span><span><strong>relevance</strong> 0.900</span><span><strong>venue_impact</strong> 0.880</span></div>
+      </details>
+      <div class="links"><a href="https://arxiv.org/abs/2212.10496" target="_blank" rel="noreferrer">arXiv</a> <a href="https://arxiv.org/pdf/2212.10496" target="_blank" rel="noreferrer">PDF URL</a> <a href="https://arxiv.org/abs/2212.10496" target="_blank" rel="noreferrer">Source</a></div>
+    </article>
+    
+
+    <article class="paper-card" id="paper-5"
+      data-rank="5" data-year="2024" data-citations="1430"
+      data-score="0.807000" data-sources-count="1"
+      data-sources="arxiv" data-pdf-status="ok"
+      data-search="a survey on retrieval-augmented text generation for large language models yunfan gao, yun xiong, haofen wang a comprehensive survey of rag for llms covering the naive, advanced, and modular rag paradigms, retrieval, generation, and augmentation techniques, and evaluation frameworks. arxiv rag survey large language models">
+      <div class="paper-head">
+        <div class="rank">#05</div>
+        <div class="paper-main">
+          <h2>A Survey on Retrieval-Augmented Text Generation for Large Language Models</h2>
+          <p class="meta">Yunfan Gao, Yun Xiong, Haofen Wang · 2024 · arXiv preprint</p>
+        </div>
+        <div class="score">score <strong>0.807</strong></div>
+      </div>
+      <div class="metrics">
+        <span>1430 citations</span>
+        <span>1 sources</span>
+        <span class="pdf-status ok">PDF downloaded</span>
+      </div>
+      <div class="chips"><span class="chip source">arxiv</span></div>
+      <p class="abstract">A comprehensive survey of RAG for LLMs covering the naive, advanced, and modular RAG paradigms, retrieval, generation, and augmentation techniques, and evaluation frameworks.</p>
+      <details>
+        <summary>Provenance, queries, and rank layers</summary>
+        <div class="queries"><span class="chip query">RAG survey large language models</span></div>
+        <div class="layers"><span><strong>access</strong> 0.800</span><span><strong>impact</strong> 0.740</span><span><strong>provenance</strong> 0.500</span><span><strong>recency</strong> 0.960</span><span><strong>relevance</strong> 0.880</span><span><strong>venue_impact</strong> 0.200</span></div>
+      </details>
+      <div class="links"><a href="https://arxiv.org/abs/2312.10997" target="_blank" rel="noreferrer">arXiv</a> <a href="https://arxiv.org/pdf/2312.10997" target="_blank" rel="noreferrer">PDF URL</a> <a href="https://arxiv.org/abs/2312.10997" target="_blank" rel="noreferrer">Source</a> <a href="../pdfs/05_survey.pdf">Local PDF</a></div>
+    </article>
+    
+    </section>
+  </main>
+  <script>
+    const list = document.getElementById('paperList');
+    const cards = Array.from(document.querySelectorAll('.paper-card'));
+    const searchInput = document.getElementById('searchInput');
+    const sourceFilter = document.getElementById('sourceFilter');
+    const pdfFilter = document.getElementById('pdfFilter');
+    const sortSelect = document.getElementById('sortSelect');
+    const resultCount = document.getElementById('resultCount');
+
+    function numeric(card, key) { return Number(card.dataset[key] || 0); }
+    function applyFilters() {
+      const q = searchInput.value.trim().toLowerCase();
+      const source = sourceFilter.value;
+      const pdf = pdfFilter.value;
+      let visible = 0;
+      cards.forEach(card => {
+        const okSearch = !q || card.dataset.search.includes(q);
+        const okSource = !source || (` ${card.dataset.sources} `).includes(` ${source} `);
+        const okPdf = !pdf || card.dataset.pdfStatus === pdf;
+        const show = okSearch && okSource && okPdf;
+        card.hidden = !show;
+        if (show) visible += 1;
+      });
+      resultCount.textContent = `${visible} / ${cards.length} papers shown`;
+    }
+    function applySort() {
+      const mode = sortSelect.value;
+      const sorted = [...cards].sort((a, b) => {
+        if (mode === 'rank') return numeric(a, 'rank') - numeric(b, 'rank');
+        if (mode === 'score') return numeric(b, 'score') - numeric(a, 'score');
+        if (mode === 'citations') return numeric(b, 'citations') - numeric(a, 'citations');
+        if (mode === 'year') return numeric(b, 'year') - numeric(a, 'year');
+        if (mode === 'sources') return numeric(b, 'sourcesCount') - numeric(a, 'sourcesCount');
+        return 0;
+      });
+      sorted.forEach(card => list.appendChild(card));
+      applyFilters();
+    }
+    [searchInput, sourceFilter, pdfFilter].forEach(el => el.addEventListener('input', applyFilters));
+    sortSelect.addEventListener('input', applySort);
+    applySort();
+
+    const summaryWrap = document.getElementById('summaryWrap');
+    document.querySelectorAll('.lang-toggle button').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.lang-toggle button').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        if (summaryWrap) summaryWrap.setAttribute('data-show', btn.dataset.show);
+      });
+    });
+  </script>
+</body>
+</html>
